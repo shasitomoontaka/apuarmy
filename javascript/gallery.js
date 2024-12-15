@@ -1,7 +1,7 @@
         const gallery = document.getElementById('gallery');
         const modal = document.getElementById('modal');
         const modalImg = document.getElementById('modal-img');
-        const imagePrefix = '/images/gallery/Apu Apustaja Meme ';  // Image folder path and name prefix
+        const imagePrefix = 'images/gallery/Apu Apustaja Meme ';  // Image folder path and name prefix
         const imageExtension = '.jpg';  // Image extension
         const imageCount = 99;  // Total number of images (1-99)
 
