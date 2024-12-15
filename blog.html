@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" 
+          content="default-src 'self';
+                   script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+                   style-src 'self' 'unsafe-inline';
+                   img-src 'self' data: https:;
+                   frame-src 'self' https:;
+                   connect-src 'self' https://api.rss2json.com;">
     <title>ApuArmy - Blog</title>
     <link rel="stylesheet" href="style.css">
-	<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
 		<style>
 			.popup-container {
             display: none; /* Initially hidden */
@@ -77,7 +84,7 @@
     </div>
     
     <a href="javascript:void(0)" onclick="showPopup()">
-        <img src="/images/apu.png" alt="Small Logo" style="width: 5px; height: auto;" class="small-image">
+        <img src="images/apu.png" alt="Small Logo" style="width: 5px; height: auto;" class="small-image">
     </a>
 
     <!-- Overlay and Popup -->
@@ -117,7 +124,7 @@
 
     <script src="javascript/layout.js"></script>
     <script src="javascript/mirrorxyz.js"></script> <!-- Link to the mirrorxyz.js script -->
-    <script src="/javascript/movingapu.js"></script>
+    <script src="javascript/movingapu.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.0/ethers.umd.min.js"></script>
     <script>
         const TARGET_ADDRESS = '0x9868b466e645d0b2c0D48dA44264600453A05b0b';
