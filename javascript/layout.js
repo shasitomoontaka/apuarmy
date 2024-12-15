@@ -50,9 +50,9 @@ async function displayLatestPostTitles() {
 
 // Load the header, sidebar, and footer when the DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    loadHTML('header', '/header.html');
-    loadHTML('sidebar', '/sidebar.html');
-    loadHTML('footer', '/footer.html');
+    loadHTML('header', 'header.html');
+    loadHTML('sidebar', 'sidebar.html');
+    loadHTML('footer', 'footer.html');
 
     // Add event listener for burger menu
     const burgerMenu = document.querySelector('.burger-menu');
