@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" 
+          content="default-src 'self';
+                   script-src 'self' 'unsafe-inline';
+                   style-src 'self' 'unsafe-inline';
+                   img-src 'self' data: https:;
+                   frame-src 'self' https: https://www.youtube.com;
+                   connect-src 'self' https://api.rss2json.com;">
     <title>ApuArmy - Music</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <!-- Header -->
@@ -22,7 +29,7 @@
             <p>ApuArmy is proud to publish new Apu songs constantly under the <span><strong>$APU HIGHER RECORDS</span></strong> music label.</p>
             <p>Reach out if you want to do a feature song or have your songs promoted here.</p>
             <figure>
-                <img class="image" src="/images/records.jpg" alt="$APU HIGHER RECORDS" />
+                <img class="image" src="images/records.jpg" alt="$APU HIGHER RECORDS" />
                 <figcaption><h3>Vibing to $APU RECORD HIGHS</h3></figcaption>
             </figure>
 
@@ -62,7 +69,7 @@
     <div id="footer"></div>
     
     
-    <script src="/javascript/layout.js"></script>
+    <script src="javascript/layout.js"></script>
 
 
 </body>
