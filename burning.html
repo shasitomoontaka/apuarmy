@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" 
+          content="default-src 'self';
+                   script-src 'self' 'unsafe-inline';
+                   style-src 'self' 'unsafe-inline';
+                   img-src 'self' data: https:;
+                   frame-src 'self' https:;
+                   connect-src 'self' https://api.rss2json.com;">
     <title>ApuArmy - Burning Hot Apu</title>
     <link rel="stylesheet" href="style.css">
-	<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <!-- Header -->
@@ -22,7 +29,7 @@
             <p>Our first events will be the <strong>Comfy Poker Table</strong> and <strong>Apu's Lucky Lottery</strong>.</p>
             
             	<figure>
-					<img class="image text-block" src="/images/gallery/Apu Apustaja Meme 22.jpg" alt="Burning Hot Apu"/>
+					<img class="image text-block" src="images/gallery/Apu Apustaja Meme 22.jpg" alt="Burning Hot Apu"/>
 					<figcaption>Let's burn some $APU</figcaption>
 				</figure>
             
@@ -78,7 +85,7 @@
             
             
 				 <figure>
-					<img class="text-block image" src="/images/poker.jpeg" alt="Apu Poker Table"/>
+					<img class="text-block image" src="images/poker.jpeg" alt="Apu Poker Table"/>
 					<figcaption>Frens keep winning!</figcaption>
 				</figure>
 			
@@ -92,6 +99,6 @@
     <!-- Footer -->
     <div id="footer"></div>
 
-    <script src="/javascript/layout.js"></script>
+    <script src="javascript/layout.js"></script>
 </body>
 </html>
