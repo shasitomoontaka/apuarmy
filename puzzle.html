@@ -3,10 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" 
+          content="default-src 'self';
+                   script-src 'self' 'unsafe-inline';
+                   style-src 'self' 'unsafe-inline';
+                   img-src 'self' data: https:;
+                   frame-src 'self' https:;
+                   connect-src 'self' https://api.rss2json.com;">
     <title>ApuArmy - Puzzle</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="/styles/puzzle.css">
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles/puzzle.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <!-- Header -->
@@ -55,7 +62,7 @@
     <!-- Footer -->
     <div id="footer"></div>
 
-    <script src="/javascript/layout.js"></script>
-    <script src="/javascript/puzzle.js"></script>
+    <script src="javascript/layout.js"></script>
+    <script src="javascript/puzzle.js"></script>
 </body>
 </html>
