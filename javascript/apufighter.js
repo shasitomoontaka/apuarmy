@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const groundLevel = 10;
 
     const enemyImages = [
-        '../images/apufighter/enemy1.png',
+        'images/apufighter/enemy1.png',
         '../images/apufighter/enemy2.png',
         '../images/apufighter/enemy3.png',
         '../images/apufighter/enemy4.png',
@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const projectile = document.createElement('div');
         projectile.className = 'projectile';
-        projectile.style.backgroundImage = isPlayer ? "url('../images/apufighter/player-projectile.png')" : "url('../images/apufighter/enemy-projectile.png')";
+        projectile.style.backgroundImage = isPlayer ? "url('images/apufighter/player-projectile.png')" : "url('images/apufighter/enemy-projectile.png')";
 
         if (isPlayer) {
             projectile.style.left = `${playerPosition.x + 2}%`;
