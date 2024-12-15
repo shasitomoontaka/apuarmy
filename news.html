@@ -3,10 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" 
+          content="default-src 'self';
+                   script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+                   style-src 'self' 'unsafe-inline';
+                   img-src 'self' data: blob: https:;
+                   frame-src 'self' https:;
+                   connect-src 'self' https://api.rss2json.com;">
     <title>ApuArmy - News</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="/styles/news.css"> <!-- Link to the new CSS -->
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles/news.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <!-- Header -->
@@ -42,19 +49,19 @@
                 <!-- Thumbnails for Background Selection -->
                 <h3>Select Background</h3>
                 <div class="news-thumbnails">
-                    <img src="/images/bg1.jpg" alt="Background 1" class="news-thumbnail">
-                    <img src="/images/bg2.jpg" alt="Background 2" class="news-thumbnail">
-                    <img src="/images/bg3.jpg" alt="Background 3" class="news-thumbnail">
-	                <img src="/images/bg4.jpg" alt="Background 4" class="news-thumbnail">
-		            <img src="/images/bg5.jpg" alt="Background 5" class="news-thumbnail">
-                    <img src="/images/bg6.jpg" alt="Background 6" class="news-thumbnail">
-	                <img src="/images/bg7.jpg" alt="Background 7" class="news-thumbnail">
+                    <img src="images/bg1.jpg" alt="Background 1" class="news-thumbnail">
+                    <img src="images/bg2.jpg" alt="Background 2" class="news-thumbnail">
+                    <img src="images/bg3.jpg" alt="Background 3" class="news-thumbnail">
+	                <img src="images/bg4.jpg" alt="Background 4" class="news-thumbnail">
+		            <img src="images/bg5.jpg" alt="Background 5" class="news-thumbnail">
+                    <img src="images/bg6.jpg" alt="Background 6" class="news-thumbnail">
+	                <img src="images/bg7.jpg" alt="Background 7" class="news-thumbnail">
                 </div>
 
                 <!-- Canvas -->
 
                 <div id="news-canvas-container" class="news-canvas-container">
-                    <img id="news-canvas-background" src="/images/bg1.jpg" alt="Canvas Background">
+                    <img id="news-canvas-background" src="images/bg1.jpg" alt="Canvas Background">
                     <div class="news-headline-div" id="news-headline-div">Headline Goes Here</div>
                     <div class="news-description-div" id="news-description-div">Description goes here...</div>
                     <div class="news-image-div" id="news-image-div"></div>
@@ -74,8 +81,8 @@
     <!-- Footer -->
     <div id="footer"></div>
 
-    <script src="/javascript/layout.js"></script>
+    <script src="javascript/layout.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="/javascript/news.js"></script> <!-- Link to the new JavaScript -->
+    <script src="javascript/news.js"></script>
 </body>
 </html>
