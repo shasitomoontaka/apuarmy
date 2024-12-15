@@ -40,7 +40,7 @@
         async function fetchBigMacPrice() {
             try {
                 // Fetch the Big Mac full index data from GitHub using CORS proxy
-                const response = await fetch("https://corsproxy.io/?https://raw.githubusercontent.com/TheEconomist/big-mac-data/master/output-data/big-mac-full-index.csv");
+                const response = await fetch("https://corsproxy.io/?url=https://raw.githubusercontent.com/TheEconomist/big-mac-data/master/output-data/big-mac-full-index.csv");
                 const csvText = await response.text();
 
                 // Parse the CSV data into rows
