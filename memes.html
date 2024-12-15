@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" 
           content="default-src 'self';
-                   script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+                   script-src 'self' 'unsafe-inline';
                    style-src 'self' 'unsafe-inline';
                    img-src 'self' data: https:;
-                   frame-src 'self' https:;">
+                   frame-src 'self' https:;
+                   connect-src 'self' https://memes.apu.com https://apu.com;
+                   form-action 'none';">
     <title>ApuArmy - Memes</title>
     <link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="styles/gallery.css">
