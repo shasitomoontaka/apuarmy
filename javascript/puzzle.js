@@ -11,7 +11,7 @@ let seconds = 0;
 let totalScore = 0;
 let pieces = [];
 const puzzleSize = 5; // 5x5 puzzle
-const imageUrl = '/images/apuzzle/puzzle'; // Base path for images
+const imageUrl = 'images/apuzzle/puzzle'; // Base path for images
 
 function createPuzzlePieces() {
     puzzleBoard.innerHTML = '';
