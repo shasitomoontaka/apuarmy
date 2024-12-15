@@ -3,9 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" 
+        content="default-src 'self';
+                 script-src 'self' 'unsafe-inline';
+                 style-src 'self' 'unsafe-inline';
+                 img-src 'self' data: https:;
+                 frame-src 'self' https:;
+                 connect-src 'self' https://api.chucknorris.io;">
   <title>ApuArmy - Home</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
 
@@ -28,8 +35,8 @@
 		</div>
 		
 <div style="display: flex; max-width: 100%; flex-wrap: nowrap;">
-    <img src="/images/crying.png" alt="Apu Apustaja Crying" style="flex: 1 1 0; max-width: 50%; height: auto;">
-    <img src="/images/laughing.png" alt="Apu Apustaja Laughing" style="flex: 1 1 0; max-width: 50%; height: auto;">
+    <img src="images/crying.png" alt="Apu Apustaja Crying" style="flex: 1 1 0; max-width: 50%; height: auto;">
+    <img src="images/laughing.png" alt="Apu Apustaja Laughing" style="flex: 1 1 0; max-width: 50%; height: auto;">
 </div>
 
 
