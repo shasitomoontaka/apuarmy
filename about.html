@@ -3,9 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" 
+      content="default-src 'self' https://api.rss2json.com;
+               connect-src 'self' https://api.rss2json.com;
+               script-src 'self' 'unsafe-inline';
+               style-src 'self' 'unsafe-inline';
+               img-src 'self' data: https:;
+               frame-src 'self' https:;
+               font-src 'self';">
     <title>ApuArmy - About</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <!-- Header -->
@@ -23,7 +31,7 @@
     <p>Our mission is to share his light through <strong>carrots</strong> and by uniting frens.</p>
     
     <figure>
-        <img class="image" src="/images/gallery/Apu Apustaja Meme 9.jpg" alt="Have A Moment To Talk About Apu Apustaja" />
+        <img class="image" src="images/gallery/Apu Apustaja Meme 9.jpg" alt="Have A Moment To Talk About Apu Apustaja" />
         <figcaption>Let Apu into your life</figcaption>
     </figure>
     
@@ -93,12 +101,12 @@
     <p><strong>Let Apu into your life today!</strong></p>
 
     <figure>
-        <img class="image" src="/images/jointhearmy.jpg" alt="Join the Apu Army" />
+        <img class="image" src="images/jointhearmy.jpg" alt="Join the Apu Army" />
         <figcaption>We want YOU to join the ApuArmy!</figcaption>
     </figure>
     
     <a href="https://youtu.be/cvHlg44yfVw?si=gSaCj5WP56Xxys93" target="blank">
-        <img src="/images/apu.png" alt="Small Logo" class="small-image">
+        <img src="images/apu.png" alt="Small Logo" class="small-image">
     </a>
 </main>
 
@@ -116,8 +124,8 @@
     <!-- Footer -->
     <div id="footer"></div>
 
-    <script src="/javascript/layout.js"></script>
-    <script src="/javascript/movingapu.js"></script>
+    <script src="javascript/layout.js"></script>
+    <script src="javascript/movingapu.js"></script>
     
 
 
