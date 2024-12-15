@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" 
+          content="default-src 'self';
+                   script-src 'self' 'unsafe-inline';
+                   style-src 'self' 'unsafe-inline';
+                   img-src 'self' data: https:;
+                   frame-src 'self' https:;
+                   connect-src 'self' https://api.rss2json.com;">
     <title>ApuArmy - More</title>
-    <link rel="stylesheet" href="/style.css">
-	<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <div id="header"></div>
@@ -16,42 +23,42 @@
             <h1>Check out more</h1>
             
             <a href="licence.html" class="block">
-				<h3><img src="/images/icons/1.png" alt="Jokes Icon" class="icon">Shitpost Licence</h3>
+				<h3><img src="images/icons/1.png" alt="Jokes Icon" class="icon">Shitpost Licence</h3>
 				<p>Make sure to always have your licence with you.</p>
 			</a>
 			
 			<a href="jokes.html" class="block">
-				<h3><img src="/images/icons/11.png" alt="Jokes Icon" class="icon">Jokes & Insults</h3>
-				<p>Hated and loved by many. Here’s what they say about Apu!</p>
+				<h3><img src="images/icons/11.png" alt="Jokes Icon" class="icon">Jokes & Insults</h3>
+				<p>Hated and loved by many. Here's what they say about Apu!</p>
 			</a>
 			
 			<a href="converter.html" class="block">
-				<h3><img src="/images/icons/15.png" alt="Converter Icon" class="icon">Converter & Chart</h3>
+				<h3><img src="images/icons/15.png" alt="Converter Icon" class="icon">Converter & Chart</h3>
 				<p>Check the $Apu chart and compare its price with other memecoins</p>
 			</a>
 			
 			<a href="frogsford.html" class="block">
-				<h3><img src="/images/icons/7.png" alt="Frogsford Icon" class="icon">Frogsford Dictionary - The Apu Translator</h3>
+				<h3><img src="images/icons/7.png" alt="Frogsford Icon" class="icon">Frogsford Dictionary - The Apu Translator</h3>
 				<p>Translate English to Apu's language and vice versa</p>
 			</a>
 			
 			<a href="flipping.html" class="block">
-				<h3><img src="/images/icons/6.png" alt="Flipping Icon" class="icon">Flipping Real Time</h3>
+				<h3><img src="images/icons/6.png" alt="Flipping Icon" class="icon">Flipping Real Time</h3>
 				<p>Watch the $APU token flipping your favorite products in real time.</p>
 			</a>
 			
 			<a href="community.html" class="block">
-				<h3><img src="/images/icons/9.png" alt="Community Icon" class="icon">Community Projects</h3>
+				<h3><img src="images/icons/9.png" alt="Community Icon" class="icon">Community Projects</h3>
 				<p>Find some Apu frens building cool stuff.</p>
 			</a>
 			
 			<a href="burning.html" class="block">
-				<h3><img src="/images/icons/17.png" alt="Burning Hot Apu Icon" class="icon">The Burning Hot Apu Initiative (TBHAI)</h3>
+				<h3><img src="images/icons/17.png" alt="Burning Hot Apu Icon" class="icon">The Burning Hot Apu Initiative (TBHAI)</h3>
 				<p>Let's burn some $APU tokens.</p>
 			</a>
 			
 			<a href="news.html" class="block">
-				<h3><img src="/images/icons/14.png" alt="Apu Apustaja News" class="icon">News</h3>
+				<h3><img src="images/icons/14.png" alt="Apu Apustaja News" class="icon">News</h3>
 				<p>Check what happened today.</p>
 			</a>
 
@@ -64,7 +71,7 @@
     </div>
     <div id="footer"></div>
 
-    <script src="/javascript/layout.js"></script> <!-- Link to your layout.js -->
+    <script src="javascript/layout.js"></script> <!-- Link to your layout.js -->
 </body>
 </html>
 
