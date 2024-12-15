@@ -3,10 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" 
+          content="default-src 'self';
+                   script-src 'self' 'unsafe-inline';
+                   style-src 'self' 'unsafe-inline';
+                   img-src 'self' data: https:;
+                   frame-src 'self' https:;
+                   connect-src 'self' https://api.rss2json.com;">
     <title>ApuArmy - Apu Fighter</title>
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="/styles/apufighter.css"> <!-- Link to the Apu Fighter CSS -->
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/apufighter.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <!-- Header -->
@@ -19,7 +26,7 @@
 			<div id="game-container">
 					<div id="loading">Loading game...</div>
 					<div id="pre-game-image">
-						<img src="/images/apufighter/background.jpg" alt="Game Start Image" />
+						<img src="images/apufighter/background.jpg" alt="Game Start Image" />
 					</div>
 					<div id="start-button">Start Game</div>
 			
@@ -74,7 +81,7 @@
     <!-- Footer -->
     <div id="footer"></div>
 
-    <script src="/javascript/layout.js"></script>
-    <script src="/javascript/apufighter.js"></script> <!-- Link to the Apu Fighter JavaScript -->
+    <script src="javascript/layout.js"></script>
+    <script src="javascript/apufighter.js"></script>
 </body>
 </html>
