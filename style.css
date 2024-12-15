@@ -1,0 +1,717 @@
+/* General Styles */
+:root {
+    --main-color: #558A36;
+    --secondary-color: #1035EC;
+    --third-color: #e8f5e9; 
+    --hover-color: #1035EC;	
+    --sidebar-bg: #333;
+    --text-color: #fff;
+    --body-bg: #f4f4f4;
+    --body-text-color: #333;
+    --header-height: 60px;
+    --main-font: 'Comic Sans MS', Arial, sans-serif; /* 'Poppin', Arial, sans-serif */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--main-font);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--body-bg);
+    color: var(--body-text-color);
+}
+
+/* Header Styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--main-color);
+    color: var(--text-color);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+    height: var(--header-height);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+    border: 2px solid #000;
+    border-radius: 2px;
+}
+
+.site-name {
+    font-size: 1.6rem;
+    margin-left: 10px;
+    white-space: nowrap;
+    font-family: var(--main-font);
+    font-weight: bold;
+}
+
+/* Navigation Styling */
+.nav-container {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links ul {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links ul li {
+    margin-left: 20px;
+}
+
+.nav-links ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links ul li a:hover {
+    color: var(--hover-color);
+}
+
+/* Burger Menu */
+.burger-menu {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+/* Main Container */
+.container {
+    display: flex;
+    width: 100%;
+    padding: calc(var(--header-height) + 20px) 20px 20px;
+    margin-top: var(--header-height);
+}
+
+/* Main Content Styling */
+main {
+    flex: 1;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3, h4 {
+    color: var(--main-color);
+    margin-bottom: 15px;
+}
+
+p {
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+a {
+    color: var(--secondary-color);
+}
+
+/* Text Block Styling */
+.text-block {
+    background-color: #ffffff; /* White background for contrast */
+    padding: 1.5rem;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 1.5rem 0; /* Spacing from other elements */
+    color: #333; /* Text color */
+}
+
+/* Heading Styling */
+.text-block h2 {
+    color: #558a36; /* Match the green color used in your website */
+    margin-bottom: 0.75rem; /* Space below the heading */
+}
+
+/* Paragraph Styling */
+.text-block p {
+    margin-bottom: 1rem; /* Space below paragraphs */
+    line-height: 1.6; /* Improve readability */
+}
+
+/* List Styling */
+.text-block ul {
+    list-style-type: disc; /* Use disc bullets */
+    padding-left: 1.5rem; /* Indent the list */
+    margin-bottom: 1rem; /* Space below the list */
+}
+
+.text-block ul li {
+    margin-bottom: 0.5rem; /* Space between list items */
+    color: #333; /* List item text color */
+}
+
+/* Emphasize strong text */
+.text-block strong {
+    font-weight: bold;
+}
+
+/* Image for pages general */
+
+.image {
+    width: 69%;          
+    height: auto;        
+    display: block;      
+    max-width: 100%;     
+    margin: 0 auto;      
+    margin-top: 25px;
+}
+
+.small-image {
+position: absolute;
+width: 69px;
+height: auto;
+border-radius: 0%;
+transform-origin: center;
+}
+
+/* Image description below */
+
+figure {
+    margin: 0;           /* Remove default margin */
+    text-align: center;  /* Center the caption below the image */
+}
+
+figcaption {
+    font-size: 0.9em;    /* Smaller font size for the caption */
+    color: #555;         /* Gray color for the caption */
+    margin-top: 0.5em;   /* Space between the image and caption */
+}
+
+
+
+/* Landing page blocks */
+
+.feature-blocks {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* This allows wrapping if the screen is too narrow */
+    margin-top: 20px;
+}
+
+.block {
+	color: inherit;
+    background-color: var(--third-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    flex: 1; /* Each block will take equal space */
+    min-width: 250px; /* Prevents blocks from getting too small */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth background change and transform */
+    text-decoration: none;
+    display: block;
+}
+
+.block h3 {
+    color: var(--body-text-bg); /* Change this to your desired color */
+}
+
+.block:hover {
+    background-color: #D4E1FF; /* Change color on hover */
+    transform: translateY(-5px);
+}
+
+.block a {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit color from parent */
+}
+
+/*Icons*/
+
+.icon {
+    width: 20px; /* Adjust size as needed */
+    height: 20px;
+    margin-right: 10px; /* Space between icon and text */
+    border-radius: 4px;
+}
+
+/* Latest Apuverse News List */
+
+.latest-apuverse {
+    display: flex;
+    flex-direction: column; /* Arrange links vertically */
+    gap: 10px; /* Space between links */
+    padding: 10px; /* Optional padding for the container */
+    list-style-type: none;
+}
+
+.latest-apuverse a {
+    color: var(--secondary-color); /* Link color */
+    text-decoration: none; /* Remove underline */
+    font-size: 1em; /* Font size for visibility */
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+/* Quote Section */
+
+.quote-container {
+    background-color: #f5f5f5; /* Light background for contrast */
+    border-left: 5px solid #007bff; /* Add a colored border */
+    padding: 15px 20px; /* Padding for spacing */
+    margin: 20px 0; /* Space around the quote */
+    font-style: italic; /* Italicize the text */
+}
+
+.quote-text {
+    font-size: 1.2em; /* Slightly larger font for emphasis */
+    margin-bottom: 10px; /* Spacing between the text and author */
+}
+
+.quote-author {
+    text-align: right; /* Align author to the right */
+    font-weight: bold; /* Make author bold */
+    color: #333; /* Author's text color */
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 240px;
+    padding: 20px;
+    background-color: #D4E1FF;
+    color: var(--body-text-color);
+    top: var(--header-height);
+    height: 100%;
+    overflow-y: auto;
+    font-family: var(--main-font);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1),
+    			0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-logo {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 20px;
+    object-fit: contain;
+}
+
+/* General Styling for all h2 inside the sidebar */
+.sidebar h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--main-color);
+}
+
+/* Shared styling for all list sections inside the sidebar */
+.sidebar-nav, .sidebar-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+.sidebar-list li {
+    margin-bottom: 1px;
+}
+
+/* Shared link styles for all sidebar links */
+.sidebar-nav li a, .sidebar-list a {
+    color: var(--body-text-color);
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    transition: color 0.3s;
+}
+
+.sidebar-nav li a:hover, .sidebar-list a:hover {
+    color: var(--hover-color);
+}
+
+
+/* Blog */
+
+#main-content h2 {
+    margin-bottom: 15px;
+}
+
+#main-content h2 a {
+    color: var(--main-color, #1035EC);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#main-content h2 a:hover {
+    color: var(--hover-color, #0c2bb3);
+    text-decoration: underline;
+}
+
+/* Style for the mirror.xyz blog post container */
+.post-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between posts */
+}
+
+/* Style for individual post items */
+.post-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the left */
+    width: 100%; /* Ensure post-item takes full width */
+}
+
+/* Style for post images */
+.post-item img {
+    width: 1000px; /* Image will take full width of its container */
+    max-width: 100%;
+    height: auto; /* Maintain aspect ratio but allow height to adjust */
+    border-radius: 8px; /* Optional: rounded corners */
+    margin-bottom: 10px; /* Space between the image and the title */
+    object-fit: fill; /* Ensures the image expands to fill the width, even if smaller */
+}
+
+/* Style for clickable post titles (h2) */
+.post-item h2 {
+    font-size: 1.5em;
+    margin: 10px 0;
+    text-align: left; /* Align text to the left */
+    width: 100%; /* Ensure h2 takes full width */
+}
+
+/* Style for the links in h2 */
+.post-item h2 a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.post-item h2 a:hover {
+    color: #558A36; /* Hover color */
+}
+
+/* Style for the joke and insult containers */
+#joke-container, #insult-container {
+    margin-top: 20px; /* Space between the button and the display */
+    margin-bottom: 40px;
+    padding: 20px; /* Padding for better readability */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Style for the display text */
+#joke-display, #insult-display {
+    font-size: 1.2em; /* Font size for better readability */
+    color: #333; /* Dark text color */
+    line-height: 1.5; /* Increase line height for readability */
+    margin: 0; /* Remove default margin */
+}
+
+/* Style for the buttons */
+#fetch-joke, #fetch-insult {
+    background-color: #558A36; /* Main brand color for button */
+    color: white; /* Text color for the button */
+    font-size: 1em; /* Button font size */
+    padding: 10px 20px; /* Padding for button */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s; /* Transition for hover effect */
+}
+
+/* Button hover effect */
+#fetch-joke:hover, #fetch-insult:hover {
+    background-color: #4a7e2f; /* Darker shade for hover effect */
+}
+
+/* converter.css */
+
+/* Style for the button */
+.sell-button {
+    display: block;
+    width: 100%; /* Full width */
+    padding: 15px; /* Padding for the button */
+    background-color: red; /* Button color */
+    color: white; /* Text color */
+    text-align: center; /* Center text */
+    font-size: 20px; /* Button text size */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    transition: opacity 0.3s; /* Smooth transition */
+    margin-bottom: 20px;
+}
+
+.sell-button:hover {
+    opacity: 0.8; /* Slightly transparent on hover */
+}
+
+.sell-button:focus {
+    outline: none; /* Remove focus outline */
+}
+
+.standard-button {
+	font-family: var(--main-font);
+    padding: 15px; /* Padding for the button */
+    background-color: var(--main-color);
+    color: white; /* Text color */
+    text-align: center; /* Center text */
+    font-size: 20px; /* Button text size */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    transition: opacity 0.3s; /* Smooth transition */
+    margin-bottom: 20px;
+    margin-top: 25px;
+}
+
+.standard-button:hover {
+    opacity: 0.9; /* Slightly transparent on hover */
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.button-link {
+    display: block;
+    width: 100%;  /* Adjust width to make buttons fill the space equally */
+    padding: 1%;
+    background-color: var(--main-color);  /* Change to match your color theme */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 2px;
+    font-size: 12px;
+}
+
+.button-link:hover {
+    opacity: 0.9;
+}
+
+
+/* Table Styles */
+#meme-coins-table {
+    width: 100%; /* Full width of the container */
+    border-collapse: collapse; /* Collapse borders for a cleaner look */
+    margin-top: 20px; /* Space above the table */
+}
+
+/* Table Header Styles */
+#meme-coins-table th {
+    background-color: #f2f2f2; /* Light grey background for the header */
+    padding: 12px; /* Padding inside header cells */
+    text-align: left; /* Align header text to the left */
+    font-weight: bold; /* Make header text bold */
+    border-bottom: 2px solid #ddd; /* Bottom border for header cells */
+}
+
+/* Table Cell Styles */
+#meme-coins-table td {
+    padding: 10px; /* Padding inside table cells */
+    text-align: left; /* Align cell text to the left */
+    border-bottom: 1px solid #ddd; /* Bottom border for cells */
+}
+
+/* Table Row Hover Effect */
+#meme-coins-table tr:hover {
+    background-color: #f5f5f5; /* Change background color on hover */
+}
+
+/* Optional: Styling for the table caption */
+#meme-coins-table caption {
+    margin-bottom: 10px; /* Space below the caption */
+    font-size: 1.2em; /* Larger font size for caption */
+    font-weight: bold; /* Bold caption text */
+}
+
+/* Style for the Gooble random meme button */
+#randomMemeButton {
+    background-color: #558A36; /* Main brand color for button */
+    color: white; /* Text color for the button */
+    font-family: var(--main-font);
+    font-size: 1em; /* Button font size */
+    padding: 10px 20px; /* Padding for button */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s; /* Transition for hover effect */
+    margin: 20px 0; /* Add some margin */
+}
+
+/* Style for the Gooble image container */
+#imageContainer {
+    display: flex;
+    justify-content: center; /* Center the image horizontally */
+    align-items: center; /* Center vertically */
+    margin: 20px 0; /* Add margin around the container */
+    min-height: 300px; /* Set a minimum height for the container */
+    max-width: 100%; /* Limit the container to a reasonable width */
+    width: 100%; /* Ensure the container takes full width */
+    overflow: hidden; /* Hide overflow */
+    border: 1px solid #ccc; /* Optional: Add a subtle border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background to frame the image */
+}
+
+/* Style for images inside the container */
+#imageContainer img {
+    max-width: 100%; /* Image will not exceed the container's width */
+    max-height: 50vh; /* Image will not exceed 50% of the viewport height */
+    width: auto; /* Maintain aspect ratio */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensure the full image is shown without cutting or distorting */
+    border-radius: 8px; /* Match the container’s rounded corners */
+    background-color: transparent; /* Ensure background is transparent */
+}
+
+
+
+
+
+/* Style for input and output fields */
+#input-text {
+    width: 100%; /* Make the input take full width of the container */
+    height: 100px; /* Set a fixed height */
+    resize: none; /* Disable resizing */
+    padding: 10px; /* Add some padding for comfort */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 16px; /* Font size for text */
+}
+
+#translation-display {
+    width: 100%; /* Make the output take full width of the container */
+    height: auto; /* Height will adjust based on content */
+    padding: 10px; /* Add some padding for comfort */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 16px; /* Font size for text */
+    color: var(--main-color)
+    background-color: #f9f9f9; /* Light background color for output */
+    min-height: 100px; /* Set a minimum height */
+    overflow-wrap: break-word; /* Break long words */
+}
+
+/* Rolling logo container */
+.rolling-logo-container {
+    width: 100%; /* Full width of the viewport */
+    height: 50px; /* Adjust the height as needed */
+    overflow: hidden; /* Hide overflow to prevent showing logo off-screen */
+    position: relative; /* Position relative to the container */
+}
+
+/* Rolling logo styles */
+.rolling-logo {
+    position: absolute; /* Allows for easy positioning */
+    height: 100%; /* Fill the container height */
+    left: -100px; /* Start slightly off the left */
+    animation: roll 20.69s linear infinite; /* Start the animation */
+    object-fit: contain; /* Ensure the logo fits within the image boundaries */
+    padding: 10px;
+}
+
+
+
+/* Keyframes for rolling animation */
+@keyframes roll {
+    0% {
+        transform: translateX(0) rotate(0deg); /* Start with no translation or rotation */
+    }
+    50% {
+        transform: translateX(calc(100vw + 100px)) rotate(1440deg); /* Move to the right side and rotate once */
+    }
+    100% {
+        transform: translateX(0) rotate(2880deg); /* Move back to the left with two full rotations */
+    }
+}
+
+
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--body-bg);
+    color: var(--text-color);
+    width: 100%;
+    margin-top: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: var(--main-color);
+        position: absolute;
+        top: var(--header-height);
+        right: 0;
+        width: 100%;
+        padding: 10px 0;
+        z-index: 9;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .nav-links ul {
+        flex-direction: column;
+    }
+
+    .nav-links ul li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .burger-menu {
+        display: block;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        margin-bottom: 20px;
+    }
+
+    main {
+        width: 100%;
+    }
+}

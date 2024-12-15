@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApuArmy - Blanko</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <style>
+        .game-container {
+            text-align: center;
+            margin: 2em auto;
+            max-width: 600px;
+        }
+        
+        #shuffleText {
+            font-family: monospace;
+            font-size: 1.2em;
+            margin: 1em 0;
+            min-height: 60px;
+            padding: 1em;
+            background: #f0f0f0;
+            border-radius: 5px;
+            word-wrap: break-word;
+            transition: background-color 0.3s ease;
+        }
+        
+        #shuffleText.success {
+            background: #90EE90;
+        }
+        
+        #seedInput {
+            width: 100%;
+            padding: 0.5em;
+            margin: 1em 0;
+            font-size: 1em;
+        }
+        
+        .message {
+            margin: 1em 0;
+            padding: 1em;
+            border-radius: 5px;
+        }
+        
+        .right {
+            background: #90EE90;
+        }
+        
+        .wrong {
+            background: #FFB6C1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Main Content and Sidebar -->
+    <div class="container">
+        <main class="content">
+            <div class="game-container">
+                <h1>Where are we going from here?</h1>
+                <div id="shuffleText">Start typing to see the magic...</div>
+                <input type="text" id="seedInput" placeholder="Enter your guess..." autocomplete="off">
+                <div id="message"></div>
+            </div>
+        </main>
+        <aside id="sidebar"></aside>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="/javascript/layout.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.0/ethers.umd.min.js"></script>
+    <script>
+        const TARGET_ADDRESS = '0x5A468F2F766dec2653947dC9d041a1B6751D768D';
+        
+        window.addEventListener('load', () => {
+            window.ethers = ethers;
+            
+            const input = document.getElementById('seedInput');
+            const messageDiv = document.getElementById('message');
+            const shuffleText = document.getElementById('shuffleText');
+            
+            input.addEventListener('input', async () => {
+                const seedPhrase = input.value.trim();
+                
+                if (!seedPhrase) {
+                    shuffleText.textContent = 'Start typing to see the magic...';
+                    shuffleText.className = '';
+                    messageDiv.textContent = '';
+                    return;
+                }
+
+                try {
+                    const messageBytes = new TextEncoder().encode(seedPhrase);
+                    const hashBytes = await crypto.subtle.digest('SHA-256', messageBytes);
+                    const hashArray = Array.from(new Uint8Array(hashBytes));
+                    const privateKeyHex = '0x' + hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+                    
+                    const wallet = new ethers.Wallet(privateKeyHex);
+                    const address = await wallet.getAddress();
+
+                    // Show the private key in the shuffle text
+                    shuffleText.textContent = wallet.privateKey;
+                    
+                    // Check if it's the correct address
+                    if (address.toLowerCase() === TARGET_ADDRESS.toLowerCase()) {
+                        messageDiv.textContent = '#0 Yes mi fren!';
+                        messageDiv.className = 'message right';
+                        shuffleText.className = 'success';
+                    } else {
+                        messageDiv.textContent = '';
+                        messageDiv.className = 'message';
+                        shuffleText.className = '';
+                    }
+                    
+                } catch (error) {
+                    console.error(error);
+                    messageDiv.textContent = 'Error: ' + error.message;
+                    messageDiv.className = 'message wrong';
+                    shuffleText.textContent = 'Error generating key';
+                    shuffleText.className = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

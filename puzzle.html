@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApuArmy - Puzzle</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/styles/puzzle.css">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Main Content and Sidebar -->
+    <div class="container">
+        <main class="content" id="main-content">
+            <h1>Apuzzle - Level <span id="level">1</span></h1>
+            
+            <button id="start-button">Start Game</button>
+
+            <!-- Timer/Score Container -->
+            <div id="score-container">
+                <div id="timer-container">
+                    Time: <span id="timer">0</span> seconds
+                </div>
+                <div id="total-score-container">
+                    Total Score: <span id="total-score">0</span> seconds
+                </div>
+            </div>
+
+            <!-- Puzzle Area -->
+            <div id="puzzle-container">
+                <!-- Game board where pieces will be displayed -->
+                <div id="puzzle-board"></div>
+            </div>
+
+            <!-- Instructions Section -->
+            <div class="text-block" style="margin-top: 30px;">
+                <h2>How to Play Apuzzle</h2>
+                <ol id="instructions">
+                    <li>Press the "Start Game" button to begin.</li>
+                    <li>Drag any puzzle piece to swap it with an adjacent piece.</li>
+                    <li>Continue swapping pieces until the image is complete.</li>
+                    <li>Your time will be recorded. Try to finish quickly!</li>
+                    <li>Once completed, you can move to the next level.</li>
+                    <li>Post your screenshot on X.com with #ApuArmy and grab some $ARMY</li>
+                </ol>
+            </div>
+
+        </main>
+        <aside id="sidebar"></aside>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="/javascript/layout.js"></script>
+    <script src="/javascript/puzzle.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApuArmy - News</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/styles/news.css"> <!-- Link to the new CSS -->
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Main Content and Sidebar -->
+    <div class="container">
+        <main class="content">
+            <h1>Latest Apu News</h1>
+            
+            <!-- News Generator Section -->
+            <section id="news-generator-section">
+                <h2>Create Your News!</h2>
+                
+                <!-- User Inputs -->
+                <div class="news-generator-inputs">
+                    <label for="news-headline">Headline:</label>
+                    <input type="text" id="news-headline" placeholder="Enter headline here">
+                    
+                    <label for="news-description">Description:</label>
+                    <textarea id="news-description" placeholder="Enter description here"></textarea>
+                    
+                    <button id="news-apply-text-btn">Apply Text</button>
+                    <button id="news-random-btn">Random Text</button>
+                </div>
+
+                <!-- Upload Image -->
+                <div class="news-image-upload">
+                    <label for="news-image-input">Upload Image:</label>
+                    <input type="file" id="news-image-input" accept="image/*">
+                </div>
+
+                <!-- Thumbnails for Background Selection -->
+                <h3>Select Background</h3>
+                <div class="news-thumbnails">
+                    <img src="/images/bg1.jpg" alt="Background 1" class="news-thumbnail">
+                    <img src="/images/bg2.jpg" alt="Background 2" class="news-thumbnail">
+                    <img src="/images/bg3.jpg" alt="Background 3" class="news-thumbnail">
+	                <img src="/images/bg4.jpg" alt="Background 4" class="news-thumbnail">
+		            <img src="/images/bg5.jpg" alt="Background 5" class="news-thumbnail">
+                    <img src="/images/bg6.jpg" alt="Background 6" class="news-thumbnail">
+	                <img src="/images/bg7.jpg" alt="Background 7" class="news-thumbnail">
+                </div>
+
+                <!-- Canvas -->
+
+                <div id="news-canvas-container" class="news-canvas-container">
+                    <img id="news-canvas-background" src="/images/bg1.jpg" alt="Canvas Background">
+                    <div class="news-headline-div" id="news-headline-div">Headline Goes Here</div>
+                    <div class="news-description-div" id="news-description-div">Description goes here...</div>
+                    <div class="news-image-div" id="news-image-div"></div>
+                    <div class="news-timestamp" id="news-timestamp">1st Nov 2024</div>
+                    <div class="news-ad" id="news-ad">www.apuarmy.com</div>
+                    <div class="news-logo">ApuArmy News</div>
+                </div>
+
+
+                <!-- Download Button -->
+                <button id="news-download-btn">Download as Image</button>
+            </section>
+        </main>
+        <aside id="sidebar"></aside>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="/javascript/layout.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="/javascript/news.js"></script> <!-- Link to the new JavaScript -->
+</body>
+</html>

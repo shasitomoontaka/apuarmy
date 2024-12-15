@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApuArmy - Blog</title>
+    <link rel="stylesheet" href="style.css">
+	<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+		<style>
+			.popup-container {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            width: 300px;
+        }
+
+        /* Background overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .close-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .block {
+            margin-top: 10px;
+        }
+
+        .message {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .message.right {
+            color: green;
+        }
+
+        .message.wrong {
+            color: red;
+        }
+        </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Main Content and Sidebar -->
+    <div class="container">
+        <main class="content" id="main-content">
+            <h1>Welcome to the Apuverse</h1>
+            <!-- Blog post links and images will be dynamically inserted here -->
+        </main>
+        <aside id="sidebar">
+            <!-- Sidebar will be loaded here -->
+        </aside>
+    </div>
+    
+    <a href="javascript:void(0)" onclick="showPopup()">
+        <img src="/images/apu.png" alt="Small Logo" style="width: 5px; height: auto;" class="small-image">
+    </a>
+
+    <!-- Overlay and Popup -->
+    <div class="overlay" id="overlay"></div>
+    <div class="popup-container" id="popup">
+        <div style="width: 100%; display: flex;">
+            <input type="text" 
+                   id="seedInput" 
+                   autocomplete="off"
+                   placeholder="Enter seed phrase"
+                   style="width: 100%; padding: 5px; border: 1px solid #ccc; border-radius: 5px; outline: none;">
+            <button onclick="generateKeys()" 
+                    id="generateButton"
+                    style="display: flex; margin-left: 5px; background-color: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">
+                Check
+            </button>
+        </div>
+
+        <div id="message" class="message"></div>
+
+        <div id="results" style="display:none; word-wrap: break-word;" class="block">
+            <div>
+                <strong>Private Key:</strong>
+                <div id="privateKey" class="result"></div>
+            </div>
+            <div>
+                <strong>Public Address:</strong>
+                <div id="publicKey" class="result"></div>
+            </div>
+        </div>
+        <button class="close-btn" onclick="closePopup()">Close</button>
+    </div>
+
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="javascript/layout.js"></script>
+    <script src="javascript/mirrorxyz.js"></script> <!-- Link to the mirrorxyz.js script -->
+    <script src="/javascript/movingapu.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.0/ethers.umd.min.js"></script>
+    <script>
+        const TARGET_ADDRESS = '0x9868b466e645d0b2c0D48dA44264600453A05b0b';
+
+        // Show the popup
+        function showPopup() {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        // Close the popup
+        function closePopup() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('popup').style.display = 'none';
+            const input = document.getElementById('seedInput');
+            input.value = '';
+            input.disabled = false;
+            document.getElementById('generateButton').disabled = false;
+            document.getElementById('message').textContent = '';
+            document.getElementById('message').className = 'message';
+            document.getElementById('results').style.display = 'none';
+        }
+
+        async function generateKeys() {
+            const input = document.getElementById('seedInput');
+            const messageDiv = document.getElementById('message');
+            const resultsDiv = document.getElementById('results');
+            const seedPhrase = input.value.trim();
+
+            if (!seedPhrase) {
+                alert('Please enter a seed phrase');
+                input.focus();
+                return;
+            }
+
+            try {
+                const button = document.getElementById('generateButton');
+                input.disabled = true;
+                button.disabled = true;
+                messageDiv.textContent = '';
+                resultsDiv.style.display = 'none';
+
+                const messageBytes = new TextEncoder().encode(seedPhrase);
+                const hashBytes = await crypto.subtle.digest('SHA-256', messageBytes);
+                const hashArray = Array.from(new Uint8Array(hashBytes));
+                const privateKeyHex = '0x' + hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+                const wallet = new ethers.Wallet(privateKeyHex);
+                const address = await wallet.getAddress();
+
+                if (address.toLowerCase() === TARGET_ADDRESS.toLowerCase()) {
+                    messageDiv.textContent = '#4 Of course mi fren. Congrats!';
+                    messageDiv.className = 'message right';
+
+                    // Show the keys only if address matches
+                    resultsDiv.style.display = 'block';
+                    document.getElementById('privateKey').textContent = wallet.privateKey;
+                    document.getElementById('publicKey').textContent = address;
+                } else {
+                    messageDiv.textContent = '#4 Uhm no. Try again mi fren.';
+                    messageDiv.className = 'message wrong';
+                }
+
+                input.disabled = false;
+                button.disabled = false;
+                input.focus();
+                input.select(); // Select the text for easy retry
+            } catch (error) {
+                console.error(error);
+                messageDiv.textContent = 'Error: ' + error.message;
+                messageDiv.className = 'message wrong';
+
+                input.disabled = false;
+                button.disabled = false;
+                input.focus();
+            }
+        }
+    </script>
+</body>
+</html>

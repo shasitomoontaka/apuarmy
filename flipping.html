@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApuArmy - Flipping</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Main Content and Sidebar -->
+    <div class="container">
+        <main class="content">
+            <h1>Apu Flipping Real Time</h1>
+
+            <!-- Content Blocks -->
+            <div class="block">
+                <h2>$APU</h2>
+                <p>Price: <span id="apu-price">Loading...</span></p>
+                <p>Market Cap: <span id="apu-marketcap">Loading...</span></p>
+            </div>
+
+            <!-- Flipping Section -->
+            <div class="block" id="nesquik">
+                <h2>Choccy Milk (1 L)</h2>
+                <p>Price: <span id="chocolatemilk-price">Loading...</span></p>
+                <p>Flipping Choccy Milk is a <span id="chocolatemilk-multiplier">Calculating...</span>x</p>
+            </div>
+
+            <div class="block" id="carrots">
+                <h2>Carrots (1 Kg)</h2>
+                <p>Price: <span id="carrots-price">Loading...</span></p>
+                <p>Multiplier: <span id="carrots-multiplier">Calculating...</span></p>
+            </div>
+
+            <div class="block" id="bigmac">
+                <h2>Big Mac</h2>
+                <p>Price: <span id="bigmac-price">$Loading...</span></p>
+                <p>Multiplier: <span id="bigmac-multiplier">Calculating...</span></p>
+            </div>
+
+            <div class="block" id="chickentenders">
+                <h2>Chibben (1 Kg)</h2>
+                <p>Price: <span id="chickentenders-price">$Loading...</span></p>
+                <p>Multiplier: <span id="chickentenders-multiplier">Calculating...</span></p>
+            </div>
+
+            <!-- Stock Prices -->
+            <div class="block" id="mcdonalds-stock">
+                <h2>McDonald's (MCD)</h2>
+                <p>Price: <span id="mcdPrice">Loading...</span></p>
+                <p>Market Cap: <span id="mcdMarketCap">Loading...</span></p>
+                <p>Multiplier: <span id="mcd-multiplier">Calculating...</span></p>
+            </div>
+
+            <div class="block" id="disney-stock">
+                <h2>Disney (DIS)</h2>
+                <p>Price: <span id="disPrice">Loading...</span></p>
+                <p>Market Cap: <span id="disMarketCap">Loading...</span></p>
+                <p>Multiplier: <span id="dis-multiplier">Calculating...</span></p>
+            </div>
+        </main>
+
+        <!-- Sidebar -->
+        <aside id="sidebar"></aside>
+    </div> 
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="/javascript/layout.js"></script>
+    <script src="/javascript/flipping.js"></script>
+</body>
+</html>

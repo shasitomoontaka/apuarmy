@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApuArmy - Memes</title>
+    <link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="/styles/gallery.css">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Main Content and Sidebar -->
+    <div class="container">
+        <main class="content" id="main-content">
+            <!-- Dynamic content will be loaded here -->
+            <h1><span style="color: #1035EC;">G</span>
+				<span style="color: #EA4335;">o</span>
+				<span style="color: #FBBC05;">o</span>
+				<span style="color: #1035EC;">b</span>
+				<span style="color: #558a36;">l</span>
+				<span style="color: #EA4335;">e</span> - The Apu Search Engine</p></h1>
+            <button id="randomMemeButton">Get Random Apu Meme</button>
+            <div id="imageContainer"></div> <!-- Container for displaying memes -->
+            
+            <h2>Apu Meme Gallery & Creator</h2>
+            <p>Make sure to check the official <a href="https://memes.apu.com/" target="_blank" rel="noopener noreferrer">Apu Meme Collection</a>
+ and try the <a href="https://apu.com/meme-generator" target="_blank" rel="noopener noreferrer">Apu Meme Generator</a>
+</p>
+            <h2>Build Your Own Apu</h2>
+            <p>You can even <a href="apubuilder.html">build your own Apu</a> using our tool</p>
+            <h2>ApuArmy Memes</h2>
+            <p>Check some of the Apu memes that our CMO (Chief Meme Officer) <a href="https://x.com/shasitomoontaka" target="_blank" rel="noopener noreferrer">Shasito</a> created</p>
+            <strong>Remember it is your DUTY to STEAL MEMES!</strong>
+            
+    <div class="gallery" id="gallery"></div>
+
+    <!-- Modal for full-size image -->
+    <div class="modal" id="modal">
+        <img id="modal-img" src="" alt="Full Image">
+    </div>
+            
+        </main>
+        <aside id="sidebar">
+            <!-- Sidebar will be loaded here -->
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- Your existing layout.js script -->
+    <script src="javascript/layout.js"></script>
+    <!-- Your gooble.js script -->
+    <script src="javascript/gooble.js"></script>
+    <!-- Your gallery.js script -->
+    <script src="javascript/gallery.js"></script>
+</body>
+</html>

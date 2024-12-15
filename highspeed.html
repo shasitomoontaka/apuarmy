@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApuArmy - J2B Highspeed</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/styles/highspeed.css">
+
+	<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Main Content and Sidebar -->
+    <div class="container">
+        <main class="content" id="main-content">
+            <!-- Dynamic content will be loaded here -->
+            <h1>The Journey To Billions</h1>
+            
+				<div style="text-align: center;">
+				<button id="startButton" class="start-highspeed">Start</button>
+				<button id="retryButton" class="hidden start-highspeed">Try Again</button>
+				<div id="info">
+				<span id="timer">Time: 0s</span> | <span id="score">Score: 0</span></div>
+       			</div>
+       			
+   				<table id="gameTable" class="hidden"></table>
+   				
+   				            <!-- Instructions Section -->
+            <div class="text-block" style="margin-top: 30px;">
+                <h2>How to Play J2B Highspeed</h2>
+                <ol>
+                    <li>Press the "Start Game" button to begin.</li>
+                    <li>Control Apu using the arrow keys on your keyboard.</li>
+                    <li>Collect as many $APU Coins as possible.</li>
+                    <li>The more $APU you collect, the faster it gets!</li>
+                    <li>Be careful! Not everything that glitters green is $APU.</li>
+                    <li>Post your screenshot on X.com with #ApuArmy and grab some $ARMY</li>
+                </ol>
+            </div>
+            
+        </main>
+        <aside id="sidebar">
+            <!-- Sidebar will be loaded here -->
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="/javascript/layout.js"></script>
+    <script src="/javascript/highspeed.js"></script>
+
+</body>
+</html>

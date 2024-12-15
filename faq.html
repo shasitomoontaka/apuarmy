@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApuArmy - FAQ</title>
+    <link rel="stylesheet" href="style.css">
+	<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+	<style>
+        .faq-item {
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .faq-question {
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .toggle-icon {
+            font-size: 1.2em;
+        }
+
+        /* Answer hidden by default */
+        .faq-answer {
+            display: none;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+<!-- FAQ Section -->
+<div class="container">
+    <main class="content">
+        <h1>Freqwesly Akshed Qestnions</h1>
+        
+			<!-- FAQ Item -->
+			<div class="faq-item">
+				<h3 class="faq-question">Who is Apu Apustaja? <span class="toggle-icon">+</span></h3>
+				<div class="faq-answer">
+					<p>Apu Apustaja is a frenly frog spreading good vibes.</p>
+				</div>
+			</div>
+			
+			<div class="faq-item">
+				<h3 class="faq-question">What is the $APU token? <span class="toggle-icon">+</span></h3>
+				<div class="faq-answer">
+					<p>The $APU token is a cryptocurrency inspired by the Apu meme and backed by a dedicated community. It embodies the spirit of fun and community-driven projects.</p>
+				</div>
+			</div>
+			
+			<div class="faq-item">
+				<h3 class="faq-question">Where to buy $APU tokens? <span class="toggle-icon">+</span></h3>
+				<div class="faq-answer">
+					<p>You can buy $APU tokens on many popular exchanges.</p>
+						<p>Check the price and markets on <a href="https://www.coingecko.com/en/coins/apu-apustaja">Coingecko</a>.</p>
+				</div>
+			</div>
+			
+			<div class="faq-item">
+				<h3 class="faq-question">What is ApuArmy? <span class="toggle-icon">+</span></h3>
+				<div class="faq-answer">
+					<p>ApuArmy is a community of Apu frens, united by a love for the Apu meme and a shared goal of overtaking the internet.</p>
+				</div>
+			</div>
+			
+			<div class="faq-item">
+				<h3 class="faq-question">What is the $ARMY token? <span class="toggle-icon">+</span></h3>
+				<div class="faq-answer">
+					<p>The $ARMY token is a memecoin airdropped to loyal Apu frens.</p>
+				</div>
+			</div>
+			
+			<div class="faq-item">
+				<h3 class="faq-question">Is Apu the same as Pepe? <span class="toggle-icon">+</span></h3>
+				<div class="faq-answer">
+					<p>No, Apu and Pepe are different characters. Pepe is another popular meme frog, but Apu is known for his kind and helpful nature.</p>
+				</div>
+			</div>
+			
+			<div class="faq-item">
+				<h3 class="faq-question">Is Apu the most known meme worldwide? <span class="toggle-icon">+</span></h3>
+				<div class="faq-answer">
+					<p>Yes.</p>
+				</div>
+			</div>
+			
+			<div class="faq-item">
+				<h3 class="faq-question">Are we going to flip Disney? <span class="toggle-icon">+</span></h3>
+				<div class="faq-answer">
+					<p>Yes.</p>
+				</div>
+			</div>
+		</main>
+		<aside id="sidebar"></aside>
+	</div>
+
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="/javascript/layout.js"></script>
+    <script>
+			document.addEventListener('DOMContentLoaded', () => {
+		const faqQuestions = document.querySelectorAll('.faq-question');
+	
+		faqQuestions.forEach(question => {
+			question.addEventListener('click', () => {
+				const answer = question.nextElementSibling;
+				const toggleIcon = question.querySelector('.toggle-icon');
+				
+				// Toggle answer visibility
+				answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+				
+				// Update toggle icon
+				toggleIcon.textContent = answer.style.display === 'block' ? '–' : '+';
+			});
+		});
+	});
+	</script>
+
+</body>
+</html>

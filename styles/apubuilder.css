@@ -1,0 +1,84 @@
+#ab-container {
+    border: 1px solid #000;
+    padding: 20px;
+    width: 690px;
+    height: 420px;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.ab-image-container {
+    position: absolute;
+    cursor: move;
+    overflow: visible; /* Ensure the whole image is visible */
+    user-select: none; /* Prevent text selection during drag */
+}
+.ab-resize-handle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #000;
+    cursor: nwse-resize;
+}
+.ab-resize-handle.ab-br {
+    right: 0;
+    bottom: 0;
+}
+.ab-image-container img {
+    width: 100%;
+    height: 100%;
+    transform-origin: center center; /* Ensure rotation around center */
+    border: none; /* Remove border */
+    box-shadow: none; /* Remove shadow */
+}
+.ab-thumbnails {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+.ab-thumbnail img {
+    max-width: 100%;
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+.ab-action-buttons {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.ab-action-buttons.ab-top-left {
+    top: 5px;
+    left: 5px;
+}
+.ab-action-buttons.ab-top-right {
+    top: 5px;
+    right: 5px;
+}
+.ab-action-buttons.ab-bottom-left {
+    bottom: 5px;
+    left: 5px;
+}
+.ab-action-buttons button {
+    padding: 5px;
+    cursor: pointer;
+}
+.ab-hidden {
+    display: none;
+}
+.ab-post img {
+    background-color: transparent !important;
+}
+
+@media (max-width: 768px) {
+    #ab-container {
+        width: 100%;  /* Make container full width */
+        max-width: 100%; /* Prevent horizontal overflow */
+        padding: 10px; /* Adjust padding for smaller screens */
+    }

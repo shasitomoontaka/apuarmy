@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApuArmy - Apu Fighter</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/styles/apufighter.css"> <!-- Link to the Apu Fighter CSS -->
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Main Content and Sidebar -->
+    <div class="container">
+        <main class="content" id="main-content">
+            <h1>Welcome to the Apu Fighter</h1>
+			<div id="game-container">
+					<div id="loading">Loading game...</div>
+					<div id="pre-game-image">
+						<img src="/images/apufighter/background.jpg" alt="Game Start Image" />
+					</div>
+					<div id="start-button">Start Game</div>
+			
+			
+					<!-- Player and Enemy -->
+					<div id="player"></div>
+					<div id="enemy"></div>
+			
+					<!-- Health bars for player and enemy -->
+					<div id="player-health-bar">
+						<div id="player-health-bar-inner"></div>
+					</div>
+					<div id="enemy-health-bar">
+						<div id="enemy-health-bar-inner"></div>
+					</div>
+			
+					<!-- HUD -->
+					<div id="hud">
+						<div id="level">Level: 1</div>
+						<div id="timer">Time: 0s</div>
+					</div>
+			
+					<!-- Floor -->
+					<div id="floor">Fight for Glory and Chibben</div>
+				</div>
+			
+				<!-- Mobile controls -->
+				<div id="mobile-controls">
+					<button id="left-btn">←</button>
+					<button id="right-btn">→</button>
+					<button id="jump-btn">↑</button>
+					<button id="shoot-btn">X</button>
+				</div>
+				
+				<!-- Instructions Section -->
+				<div class="text-block" style="margin-top: 30px;">
+					<h2>How to Play Apufighter</h2>
+					<ol>
+						<li>Press the "Start Game" button to begin.</li>
+						<li>Control Apu using the arrow keys on your keyboard or use the buttons (mobile only).</li>
+						<li>Throw them Nuggies using Space Bar.</li>
+						<li>Don't get hit by dirty FIAT</li>
+						<li>Post your screenshot on X.com with #ApuArmy and grab some $ARMY</li>
+					</ol>
+				</div>
+        </main>
+        <aside id="sidebar">
+            <!-- Sidebar will be loaded here -->
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="/javascript/layout.js"></script>
+    <script src="/javascript/apufighter.js"></script> <!-- Link to the Apu Fighter JavaScript -->
+</body>
+</html>

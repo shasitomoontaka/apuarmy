@@ -1,0 +1,66 @@
+/* Wall of Memes Specific Styles */
+
+/* Game Area Styling */
+.game-area-wallofmemes {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    background-color: lightblue;
+    border: 2px solid black;
+    overflow: hidden;
+    margin: 20px auto;
+}
+
+/* Player Styling */
+.player-wallofmemes {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    z-index: 10;
+    transition: height 0.1s ease-out, bottom 0.1s ease-out;
+}
+
+/* Block Styling */
+.block-wallofmemes {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    z-index: 5;
+}
+
+/* Bullet Styling */
+.bullet-wallofmemes {
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    background-color: yellow;
+    z-index: 8;
+}
+
+/* Start Button Styling */
+.start-button-wallofmemes {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 18px;
+}
+
+/* Message Display Styling */
+.message-wallofmemes {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 10px;
+    color: darkblue;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .game-area-wallofmemes {
+        height: 300px;
+    }
+}

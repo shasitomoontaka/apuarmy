@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApuArmy - Converter</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your main CSS file -->
+	<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <script src="https://widgets.coingecko.com/gecko-coin-price-chart-widget.js"></script> <!-- CoinGecko widget script -->
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Main Content and Sidebar -->
+    <div class="container">
+        <main class="content" id="main-content">
+            <h1>Flat $APU Chart</h1>
+
+            <!-- CoinGecko Chart Widget -->
+            <gecko-coin-price-chart-widget 
+                locale="en" 
+                transparent-background="true" 
+                outlined="true" 
+                coin-id="apu-s-club" 
+                initial-currency="usd">
+            </gecko-coin-price-chart-widget>
+
+            <!-- Sell Button -->
+            <button class="sell-button" id="sell-button">SELL $APU COIN</button>
+            
+			<!-- Meme Coins Section -->
+			<h2>$APU Converter</h2>
+			<p>Bitcoin is often referred to as hard money. $APU is tard money.</p>
+			<p>It’s not too late to swap your worthless shotcoins for $APU.</p>
+			<p>Check how much $APU you can get for one of your memecoins.</p>
+			<input type="text" id="search-bar" placeholder="Search for a coin..." /> <!-- Search Bar -->
+			<table id="meme-coins-table">
+				<thead>
+					<tr>
+						<th>Shitcoins</th>
+						<th>$APU</th>
+					</tr>
+				</thead>
+				<tbody id="meme-coins-list"></tbody> <!-- List to display meme coins -->
+			</table>
+
+
+
+
+        </main>
+        <aside id="sidebar">
+            <!-- Sidebar will be loaded here -->
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="javascript/layout.js"></script>
+    <script src="javascript/converter.js"></script> <!-- Link to the converter-specific JavaScript -->
+</body>
+</html>

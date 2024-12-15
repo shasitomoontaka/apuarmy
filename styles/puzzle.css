@@ -1,0 +1,80 @@
+/* Style for the Puzzle */
+#puzzle-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#score-container {
+    display: flex; /* Use flexbox to align timer and score */
+    justify-content: center; /* Center align the score and timer */
+    width: 100%; /* Make it take full width */
+    margin-bottom: 5px; /* Space between score and puzzle board */
+}
+
+#timer-container, #total-score-container {
+    margin: 0 100px; /* Add some spacing between timer and score */
+}
+
+#puzzle-board {
+    width: 100%; /* Make the board responsive */
+    max-width: 500px; /* Set a max width for larger screens */
+    aspect-ratio: 1; /* Maintain the square shape */
+    border: 2px solid #333;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columns for a 5x5 puzzle */
+    grid-template-rows: repeat(5, 1fr); /* 5 rows for a 5x5 puzzle */
+    position: relative; /* Positioning for draggable pieces */
+    margin: auto; /* Center the puzzle */
+}
+
+.puzzle-piece {
+    width: 100%; /* Each piece fills the grid cell */
+    height: 100%;
+    border: 1px solid #999;
+    box-sizing: border-box;
+    cursor: move;
+    background-size: 500px 500px; /* Ensure each piece reflects the full size of the image */
+    position: relative;
+}
+
+
+
+#start-button {
+	color: var(--text-color);
+	background-color: var(--main-color);
+	font-weight: bold;
+    font-size: 18px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 20px auto; /* Center the start button */
+    display: block; /* Makes margin auto work */
+    font-family: var(--main-font);
+}
+
+#instructions-section {
+    margin-top: 30px; /* Add spacing above */
+    text-align: left; /* Align text to the left */
+    padding: 15px; /* Add padding for better spacing */
+    background-color: #f9f9f9; /* Light background color */
+    border: 1px solid #ddd; /* Light border around the section */
+    border-radius: 5px; /* Rounded corners */
+}
+
+#instructions {
+    margin: 0; /* Remove default margin */
+    padding-left: 20px; /* Add padding for list indentation */
+}
+
+/* Media query for small devices */
+@media (max-width: 600px) {
+    #score-container {
+        flex-direction: column; /* Stack score and timer on smaller screens */
+        align-items: center; /* Center items */
+        margin-bottom: 10px; /* Add space below score */
+    }
+
+    #timer-container, #total-score-container {
+        margin: 5px 0; /* Space between stacked items */
+    }
+}

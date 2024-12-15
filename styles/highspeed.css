@@ -1,0 +1,105 @@
+	/* Game table styling */
+	#gameTable {
+		border-collapse: collapse;
+		margin: 20px auto;
+		background-image: url('/images/highspeed/space-background.jpg');
+		background-size: cover;
+		width: 100%;
+		max-width: 1000px; /* Maximum width for larger screens */
+		aspect-ratio: 2 / 1; /* Aspect ratio of 2:1 (width:height) */
+		height: auto; /* Automatically adjusts height based on the aspect ratio */
+	}
+	
+	/* Table cells */
+	td {
+		width: calc(100% / 20); /* Keep cells proportional to the table width */
+		height: auto; /* Height will follow the aspect ratio of the table */
+		border: rgba(0, 0, 0, 0);
+		position: relative;
+	}
+
+    .player {
+        background-color: rgba(0, 0, 0, 0);
+        background-image: url('/images/highspeed/apunaut.png'); 
+        background-size: cover;
+    }
+    .red-block {
+        background-color: rgba(0, 0, 0, 0);
+    	background-size: cover;
+        background-image: url('/images/highspeed/wojak.png'); 
+    }
+    
+    .collectible {
+        background-color: rgba(0, 0, 0, 0);
+        background-image: url('/images/highspeed/apu-logo.png'); 
+        background-size: cover;
+    }
+    .negative-collectible {
+        background-color: rgba(0, 0, 0, 0);
+        background-image: url('/images/highspeed/pepe.png'); 
+        background-size: cover;
+    }
+    .black-block {
+        background-color: rgba(0, 0, 0, 0);
+        background-image: url('/images/highspeed/doge.png'); 
+        background-size: cover;
+    }
+    .purple-collectible {
+        background-color: rgba(0, 0, 0, 0);
+        background-image: url('/images/highspeed/gatorade.png'); 
+        background-size: cover;
+    }
+    .large-player {
+        background-color: grey;
+    }
+    .hidden {
+        display: none;
+    }
+    .start-highspeed {
+    background-color: #558A36; /* Main brand color for button */
+    color: white; /* Text color for the button */
+    font-size: 1em; /* Button font size */
+    font-family: var(--main-font);
+    padding: 10px 20px; /* Padding for button */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s; /* Transition for hover effect */
+    margin: 20px 0; /* Add some margin */
+	}
+	.grey-block {
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url('/images/highspeed/kfc.png'); 
+    background-size: cover;
+	}
+	.yellow-block {
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url('/images/highspeed/random.png'); 
+    background-size: cover;
+	}
+	
+	/* For the 2x2 enlarged player */
+	.player-bottom-right {
+		background-image: url('/images/highspeed/apunaut.png');
+		background-position: bottom right;
+		background-size: 200% 200%;
+	}
+	
+	.player-bottom-left {
+		background-image: url('/images/highspeed/apunaut.png');
+		background-position: bottom left;
+		background-size: 200% 200%;
+	}
+	
+	.player-top-right {
+		background-image: url('/images/highspeed/apunaut.png');
+		background-position: top right;
+		background-size: 200% 200%;
+	}
+	
+	.player-top-left {
+		background-image: url('/images/highspeed/apunaut.png');
+		background-position: top left;
+		background-size: 200% 200%;
+	}
+	

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApuArmy - Mommy Rage</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/mommyrage.css"> <!-- Link to the specific game CSS -->
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Main Content and Sidebar -->
+    <div class="container">
+        <main class="content" id="main-content">
+            <h1>Mommy Rage</h1>
+            
+            <!-- Game Section -->
+            <div id="gameContainer">
+                <button id="startButton">Start Game</button>
+                <canvas id="gameCanvas" width="512" height="512"></canvas>
+                <div id="controls">
+                    <div class="button-group">
+                        <button id="left">Left</button>
+                        <button id="right">Right</button>
+                    </div>
+                    <div class="button-group">
+                        <button id="up">Up</button>
+                        <button id="down">Down</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instructions Section -->
+            <div class="text-block" style="margin-top: 30px;">
+                <h2>How to Play Mommy Rage</h2>
+                <ol id="instructions">
+                    <li>Press the "Start Game" button to begin.</li>
+                    <li>Control Apu using the arrow keys on your keyboard or the buttons provided.</li>
+                    <li>Collect as many Nuggies as possible.</li>
+                    <li>The more Nuggies you collect, the angrier Mommy gets!</li>
+                    <li>Consume a Monster to calm Mommy down a bit, but it will cost you a Nuggie.</li>
+                    <li>Post your screenshot on X.com with #ApuArmy and grab some $ARMY.</li>
+                </ol>
+            </div>
+
+        </main>
+
+        <aside id="sidebar">
+            <!-- Sidebar will be loaded here -->
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- Link JavaScript files -->
+    <script src="/javascript/layout.js"></script> <!-- Layout for header/footer -->
+    <script src="/javascript/mommyrage.js"></script> <!-- Mommy Rage game logic -->
+</body>
+</html>
