@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" 
+          content="default-src 'self';
+                   script-src 'self' 'unsafe-inline' https://widgets.coingecko.com https://cdnjs.cloudflare.com;
+                   style-src 'self' 'unsafe-inline';
+                   img-src 'self' data: https:;
+                   frame-src 'self' https:;
+                   connect-src 'self' https://api.rss2json.com https://api.coingecko.com;">
     <title>ApuArmy - Converter</title>
     <link rel="stylesheet" href="style.css"> <!-- Link to your main CSS file -->
-	<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <script src="https://widgets.coingecko.com/gecko-coin-price-chart-widget.js"></script> <!-- CoinGecko widget script -->
 </head>
 <body>
