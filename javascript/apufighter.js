@@ -37,15 +37,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const enemyImages = [
         'images/apufighter/enemy1.png',
-        '../images/apufighter/enemy2.png',
-        '../images/apufighter/enemy3.png',
-        '../images/apufighter/enemy4.png',
-        '../images/apufighter/enemy5.png',
-        '../images/apufighter/enemy6.png',
-        '../images/apufighter/enemy7.png',
-        '../images/apufighter/enemy8.png',
-        '../images/apufighter/enemy9.png',
-        '../images/apufighter/enemy10.png'
+        'images/apufighter/enemy2.png',
+        'images/apufighter/enemy3.png',
+        'images/apufighter/enemy4.png',
+        'images/apufighter/enemy5.png',
+        'images/apufighter/enemy6.png',
+        'images/apufighter/enemy7.png',
+        'images/apufighter/enemy8.png',
+        'images/apufighter/enemy9.png',
+        'images/apufighter/enemy10.png'
     ];
 
     // Preload images
