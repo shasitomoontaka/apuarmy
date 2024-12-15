@@ -2,7 +2,7 @@
 	#gameTable {
 		border-collapse: collapse;
 		margin: 20px auto;
-		background-image: url('/images/highspeed/space-background.jpg');
+		background-image: url('../images/highspeed/space-background.jpg');
 		background-size: cover;
 		width: 100%;
 		max-width: 1000px; /* Maximum width for larger screens */
@@ -20,33 +20,33 @@
 
     .player {
         background-color: rgba(0, 0, 0, 0);
-        background-image: url('/images/highspeed/apunaut.png'); 
+        background-image: url('../images/highspeed/apunaut.png'); 
         background-size: cover;
     }
     .red-block {
         background-color: rgba(0, 0, 0, 0);
     	background-size: cover;
-        background-image: url('/images/highspeed/wojak.png'); 
+        background-image: url('../images/highspeed/wojak.png'); 
     }
     
     .collectible {
         background-color: rgba(0, 0, 0, 0);
-        background-image: url('/images/highspeed/apu-logo.png'); 
+        background-image: url('../images/highspeed/apu-logo.png'); 
         background-size: cover;
     }
     .negative-collectible {
         background-color: rgba(0, 0, 0, 0);
-        background-image: url('/images/highspeed/pepe.png'); 
+        background-image: url('../images/highspeed/pepe.png'); 
         background-size: cover;
     }
     .black-block {
         background-color: rgba(0, 0, 0, 0);
-        background-image: url('/images/highspeed/doge.png'); 
+        background-image: url('../images/highspeed/doge.png'); 
         background-size: cover;
     }
     .purple-collectible {
         background-color: rgba(0, 0, 0, 0);
-        background-image: url('/images/highspeed/gatorade.png'); 
+        background-image: url('../images/highspeed/gatorade.png'); 
         background-size: cover;
     }
     .large-player {
@@ -69,36 +69,36 @@
 	}
 	.grey-block {
     background-color: rgba(0, 0, 0, 0);
-    background-image: url('/images/highspeed/kfc.png'); 
+    background-image: url('../images/highspeed/kfc.png'); 
     background-size: cover;
 	}
 	.yellow-block {
     background-color: rgba(0, 0, 0, 0);
-    background-image: url('/images/highspeed/random.png'); 
+    background-image: url('../images/highspeed/random.png'); 
     background-size: cover;
 	}
 	
 	/* For the 2x2 enlarged player */
 	.player-bottom-right {
-		background-image: url('/images/highspeed/apunaut.png');
+		background-image: url('../images/highspeed/apunaut.png');
 		background-position: bottom right;
 		background-size: 200% 200%;
 	}
 	
 	.player-bottom-left {
-		background-image: url('/images/highspeed/apunaut.png');
+		background-image: url('../images/highspeed/apunaut.png');
 		background-position: bottom left;
 		background-size: 200% 200%;
 	}
 	
 	.player-top-right {
-		background-image: url('/images/highspeed/apunaut.png');
+		background-image: url('../images/highspeed/apunaut.png');
 		background-position: top right;
 		background-size: 200% 200%;
 	}
 	
 	.player-top-left {
-		background-image: url('/images/highspeed/apunaut.png');
+		background-image: url('../images/highspeed/apunaut.png');
 		background-position: top left;
 		background-size: 200% 200%;
 	}
