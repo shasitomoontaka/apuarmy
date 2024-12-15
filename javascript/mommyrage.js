@@ -5,20 +5,20 @@ const startButton = document.getElementById('startButton');
 
 // Load images
 const pacmanImage = new Image();
-pacmanImage.src = '/images/mommyrage/image1.png';
+pacmanImage.src = 'images/mommyrage/image1.png';
 
 const ghostImage = new Image();
-ghostImage.src = '/images/mommyrage/image2.png';
+ghostImage.src = 'images/mommyrage/image2.png';
 
 const coin1Image = new Image();
-coin1Image.src = '/images/mommyrage/image3.png';
+coin1Image.src = 'images/mommyrage/image3.png';
 
 const coin2Image = new Image();
-coin2Image.src = '/images/mommyrage/image4.png';
+coin2Image.src = 'images/mommyrage/image4.png';
 
 // Overlay image for start screen
 const overlayImage = new Image();
-overlayImage.src = '/images/mommyrage/mommyrage.jpg';
+overlayImage.src = 'images/mommyrage/mommyrage.jpg';
 
 // Game variables
 const pacman = { x: 32, y: 32, width: 32, height: 32, speed: 8 };
