@@ -1,2 +1,1 @@
-permalink: pretty
-include: [".html"]
+permalink: /:basename/
