@@ -67,5 +67,11 @@ function toggleNav() {
     navLinks.classList.toggle('active');
 }
 
+// hide .html extension in browser
+if (window.location.pathname.endsWith('.html')) {
+    const newPath = window.location.pathname.slice(0, -5); // remove .html
+    window.history.replaceState(null, '', newPath);
+}
+
 	
 
