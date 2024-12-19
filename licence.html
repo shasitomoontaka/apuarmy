@@ -102,7 +102,7 @@
             // Draw fixed footer
             ctx.fillStyle = '#558A36'; // Footer background color
             ctx.fillRect(0, canvas.height - 50, canvas.width, 50); // Footer at the bottom, 50px high
-            ctx.font = 'bold 18px Comic Sans MS, cursive, sans-serif'; // Footer font
+            ctx.font = 'bold 18px Comic Sans MS, Arial, sans-serif'; // Footer font
             ctx.fillStyle = '#fff';  // White text for footer
             ctx.fillText('Issued by ApuArmy', canvas.width - 200, canvas.height - 20);  // Footer text
 
@@ -111,7 +111,7 @@
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
             const dateString = date.toLocaleDateString('en-GB', options); // Format as "1st Jan 2024"
             ctx.fillStyle = '#fff';
-            ctx.font = '16px Comic Sans MS, cursive, sans-serif';
+            ctx.font = '16px Comic Sans MS, Arial, sans-serif';
             ctx.fillText(dateString, 20, canvas.height - 20); // Timestamp at bottom left
 
             // Background of the license (content area)
@@ -132,7 +132,7 @@
             const valueX = 350;  // Start X-coordinate for the input values (so they align nicely with labels)
 
             // Set the font and color for the text
-            ctx.font = '20px Comic Sans MS, sans-serif';
+            ctx.font = '20px Comic Sans MS, Arial, sans-serif';
             ctx.fillStyle = '#000';
 
             // Draw text for Name, Job Title, Contact, and Description at the same X-position for labels and input values
@@ -186,7 +186,7 @@ document.getElementById('license-form').addEventListener('submit', function(even
     const ctx = canvas.getContext('2d');
 
     // Set font and color for random text
-    ctx.font = '18px Comic Sans MS, cursive, sans-serif';
+    ctx.font = '18px Comic Sans MS, Arial, sans-serif';
     ctx.fillStyle = 'rgba(166, 166, 166, 0.5)';
 
     // Position the text below the description
