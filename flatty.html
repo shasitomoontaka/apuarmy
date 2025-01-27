@@ -17,7 +17,7 @@
         .fc-game-container {
             width: 800px;
             height: 600px;
-            position: relative;
+            position: absolute;
             overflow: hidden;
             background: #87CEEB;
             margin: 0 auto;
@@ -195,8 +195,11 @@
                 
                 this.startButton.addEventListener('click', () => this.startGame());
                 window.addEventListener('keydown', (e) => {
-                    if (e.code === 'Space') this.jump();
-                });
+		    if (e.code === 'Space') {
+		        e.preventDefault(); // Prevent the page from scrolling
+		        this.jump(); // Keep your existing jump function call
+		    }
+		});
                 this.gameContainer.addEventListener('touchstart', () => this.jump());
             }
 
