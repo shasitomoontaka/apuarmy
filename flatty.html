@@ -204,11 +204,15 @@
                 
                 this.startButton.addEventListener('click', () => this.startGame());
                 window.addEventListener('keydown', (e) => {
-		    if (e.code === 'Space') {
-		        e.preventDefault(); // Prevent the page from scrolling
-		        this.jump(); // Keep your existing jump function call
+		    const activeElement = document.activeElement;
+		    const isTextInput = activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA';
+		
+		    if (e.code === 'Space' && !isTextInput) {
+		        e.preventDefault(); // Prevent the page from scrolling and trigger jump only when the input field is not active
+		        this.jump();
 		    }
 		});
+
                 this.gameContainer.addEventListener('touchstart', () => this.jump());
             }
 
