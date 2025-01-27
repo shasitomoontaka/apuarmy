@@ -154,9 +154,15 @@
         </div>
 
 	<div id="userInputContainer" class="fc-user-input" style="display: none;">
-            <label for="userInput"></label>
-            <input type="text" id="userInput" placeholder="">
-        </div>
+	    <label for="seedInput">You scored 6900. Now repeat after me:</label>
+	    <input type="text" id="seedInput" placeholder="...">
+	    <button id="generateButton" onclick="generateKeys()">I'm retarded</button>
+	    <div id="message" class="message"></div>
+	    <div id="results" style="display: none;">
+	        <p>Private Key: <span id="privateKey"></span></p>
+	        <p>Public Address: <span id="publicKey"></span></p>
+	    </div>
+	</div>
 		
         </div>
 
@@ -413,18 +419,20 @@
         let gameInterval;
 
         // Function to monitor the game's score
-        function monitorScore() {
-            const scoreElement = document.getElementById('score'); // The score element from the game
-            if (scoreElement) {
-                const currentScore = parseInt(scoreElement.textContent, 10) || 0;
-
-                // Show input field when score reaches 50
-                if (currentScore >= 50 && userInputContainer.style.display === 'none') {
-                    userInputContainer.style.display = 'block';
-                    clearInterval(gameInterval); // Stop monitoring once the input field is shown
-                }
-            }
-        }
+	function monitorScore() {
+	    const scoreElement = document.getElementById('score'); // The score element from the game
+	    const userInputContainer = document.getElementById('userInputContainer'); // Reference the input container
+	
+	    if (scoreElement) {
+	        const currentScore = parseInt(scoreElement.textContent, 10) || 0;
+	
+	        // Show input field when score reaches 50
+	        if (currentScore >= 50 && userInputContainer.style.display === 'none') {
+	            userInputContainer.style.display = 'block'; // Show the input container
+	            clearInterval(gameInterval); // Stop monitoring once the input field is shown
+	        }
+	    }
+	}
 
         // Wait for the game to begin before starting the score monitoring
         const startButton = document.getElementById('startButton');
