@@ -71,6 +71,7 @@
             color: white;
             font-size: 20px;
             z-index: 9;
+	    display: none;
         }
 
         .fc-carrot {
@@ -157,6 +158,7 @@
             <label for="userInput"></label>
             <input type="text" id="userInput" placeholder="">
         </div>
+    </div>
 
             
             
@@ -206,6 +208,7 @@
 
             startGame() {
                 this.startScreen.style.display = 'none';
+		this.stats.style.display = 'block'; // Show stats when the game starts
                 this.gameOverMessage.innerHTML = '';
                 this.finalStats.innerHTML = '';
                 this.createCarrot();
