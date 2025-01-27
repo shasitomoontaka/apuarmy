@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" 
+          content="default-src 'self';
+                   script-src 'self' 'unsafe-inline';
+                   style-src 'self' 'unsafe-inline';
+                   img-src 'self' data: https:;
+                   frame-src 'self' https:;
+                   connect-src 'self' https://api.rss2json.com;">
+    <title>ApuArmy - Flatty Carrot</title>
+    <link rel="stylesheet" href="style.css">
+	  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+       <style>
+        .fc-game-container {
+            width: 800px;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+            background: #87CEEB;
+            margin: 0 auto;
+            touch-action: none;
+            background-image: url('images/flattycarrot/background.gif');
+        }
+
+        .fc-start-screen {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 100;
+            color: white;
+            text-align: center;
+            background-image: url('images/flattycarrot/start.jpg');
+        }
+
+        .fc-start-button {
+            padding: 15px 30px;
+            font-size: 24px;
+            background: #FF6B6B;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .fc-game-over {
+            margin-bottom: 20px;
+            font-size: 36px;
+            color: #FF6B6B;
+        }
+
+        .fc-final-stats {
+            font-size: 24px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .fc-stats {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            font-size: 20px;
+            z-index: 50;
+        }
+
+        .fc-carrot {
+            width: 60px;
+            height: 100px;
+            position: absolute;
+            background: rgba(0, 0, 0, 0);
+            border-radius: 50%;
+            left: 100px;
+            background-image: url('images/flattycarrot/apu.png');
+        }
+
+        .fc-obstacle {
+            position: absolute;
+            background: #2ecc71;
+            border-radius: 5px;
+        }
+
+        .fc-coin {
+            width: 42px;
+            height: 42px;
+            position: absolute;
+            background: gold;
+            border-radius: 50%;
+            background-image: url('images/flattycarrot/coin.png');
+        }
+
+        .fc-boundary {
+            position: absolute;
+            width: 100%;
+            height: 20px;
+            background: #2c3e50;
+            z-index: 40;
+        }
+
+        .fc-boundary.top {
+            top: 0;
+        }
+
+        .fc-boundary.bottom {
+            bottom: 0;
+        }
+        
+        .fc-user-input {
+      		margin: 20px auto;
+      		text-align: center;
+      		font-size: 18px;
+    		}
+    	
+    		.fc-user-input input {
+    			padding: 10px;
+    			font-size: 16px;
+    			border: 1px solid #ccc;
+    			border-radius: 5px;
+    			width: 300px;
+    		}
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Main Content and Sidebar -->
+    <div class="container">
+        <main class="content">
+            <h1>Flatty Carrot</h1>
+
+        <div class="fc-game-container" id="gameContainer">
+        <div class="fc-boundary top"></div>
+        <div class="fc-boundary bottom"></div>
+        <div class="fc-start-screen" id="startScreen">
+            <img src="images/flattycarrot/logo.png" alt="Game Logo">
+            <div id="gameOverMessage"></div>
+            <div id="finalStats" class="fc-final-stats"></div>
+            <button class="fc-start-button" id="startButton">Start Game</button>
+        </div>
+        <div class="fc-stats" id="stats">
+            Time: <span id="time">0</span>s | Coins: <span id="coins">0</span> | Score: <span id="score">0</span>
+        </div>
+        </div>
+
+        <div id="userInputContainer" class="fc-user-input" style="display: none;">
+            <label for="userInput"></label>
+            <input type="text" id="userInput" placeholder="">
+        </div>
+
+            
+            
+        </main>
+        <aside id="sidebar"></aside>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="javascript/layout.js"></script>
+
+        <script>
+        class FlattyCarrot {
+            constructor() {
+                this.gameContainer = document.getElementById('gameContainer');
+                this.startScreen = document.getElementById('startScreen');
+                this.startButton = document.getElementById('startButton');
+                this.stats = document.getElementById('stats');
+                this.gameOverMessage = document.getElementById('gameOverMessage');
+                this.finalStats = document.getElementById('finalStats');
+                
+                this.carrot = null;
+                this.obstacles = [];
+                this.coins = [];
+                this.gameLoop = null;
+                this.isJumping = false;
+                this.gravity = 0.6;
+                this.velocity = 0;
+                this.score = 0;
+                this.coinCount = 0;
+                this.timeElapsed = 0;
+                this.difficulty = 1;
+                
+                this.topBoundary = 20;
+                this.bottomBoundary = 580;
+                
+                this.startButton.addEventListener('click', () => this.startGame());
+                window.addEventListener('keydown', (e) => {
+                    if (e.code === 'Space') this.jump();
+                });
+                this.gameContainer.addEventListener('touchstart', () => this.jump());
+            }
+
+            startGame() {
+                this.startScreen.style.display = 'none';
+                this.gameOverMessage.innerHTML = '';
+                this.finalStats.innerHTML = '';
+                this.createCarrot();
+                this.resetStats();
+                this.gameLoop = setInterval(() => this.update(), 16);
+                this.obstacleInterval = setInterval(() => this.createObstacle(), 2000 / this.difficulty);
+                this.coinInterval = setInterval(() => this.createCoin(), 3000 / this.difficulty);
+                this.timeInterval = setInterval(() => {
+                    this.timeElapsed++;
+                    this.updateStats();
+                    this.difficulty = 1 + (this.timeElapsed / 30);
+                }, 1000);
+            }
+
+            resetStats() {
+                this.score = 0;
+                this.coinCount = 0;
+                this.timeElapsed = 0;
+                this.updateStats();
+            }
+
+            createCarrot() {
+                this.carrot = document.createElement('div');
+                this.carrot.className = 'fc-carrot';
+                this.carrot.style.top = '300px';
+                this.gameContainer.appendChild(this.carrot);
+            }
+
+            jump() {
+                if (this.gameLoop) {
+                    this.velocity = -12;
+                }
+            }
+
+            createObstacle() {
+                const isTop = Math.random() > 0.5;
+                const obstacle = document.createElement('div');
+                obstacle.className = 'fc-obstacle';
+            
+                const maxObstacleHeight = 300;
+                const gapHeight = 120;
+                const height = Math.min(maxObstacleHeight, 100 + Math.random() * 200 * this.difficulty);
+                const width = 30;
+                const speed = 3 * this.difficulty;
+            
+                obstacle.style.height = height + 'px';
+                obstacle.style.width = width + 'px';
+                obstacle.style.left = '800px';
+            
+                if (isTop) {
+                    obstacle.style.top = '20px';
+                    obstacle.style.background = 'red';
+                } else {
+                    obstacle.style.top = (this.bottomBoundary - height) + 'px';
+                    obstacle.style.background = 'green';
+                }
+            
+                this.gameContainer.appendChild(obstacle);
+                this.obstacles.push({
+                    element: obstacle,
+                    speed: speed
+                });
+            }
+
+            createCoin() {
+                const coin = document.createElement('div');
+                coin.className = 'fc-coin';
+                coin.style.left = '800px';
+                coin.style.top = (this.topBoundary + 20) + Math.random() * 
+                    (this.bottomBoundary - this.topBoundary - 60) + 'px';
+                
+                this.gameContainer.appendChild(coin);
+                this.coins.push({
+                    element: coin,
+                    speed: 3
+                });
+            }
+
+            update() {
+                this.velocity += this.gravity;
+                let carrotTop = parseInt(this.carrot.style.top) + this.velocity;
+            
+                if (carrotTop < this.topBoundary) {
+                    carrotTop = this.topBoundary;
+                    this.velocity = 0;
+                } else if (carrotTop > this.bottomBoundary - 100) {
+                    carrotTop = this.bottomBoundary - 100;
+                    this.velocity = 0;
+                }
+            
+                this.carrot.style.top = carrotTop + 'px';
+            
+                this.obstacles.forEach((obstacle, index) => {
+                    const currentLeft = parseInt(obstacle.element.style.left);
+                    obstacle.element.style.left = (currentLeft - obstacle.speed) + 'px';
+            
+                    if (this.checkCollision(this.carrot, obstacle.element)) {
+                        this.gameOver();
+                    }
+            
+                    if (currentLeft < -50) {
+                        obstacle.element.remove();
+                        this.obstacles.splice(index, 1);
+                    }
+                });
+
+                this.coins.forEach((coin, index) => {
+                    const currentLeft = parseInt(coin.element.style.left);
+                    coin.element.style.left = (currentLeft - coin.speed) + 'px';
+                    
+                    if (this.checkCollision(this.carrot, coin.element)) {
+                        this.coinCount++;
+                        this.updateStats();
+                        coin.element.remove();
+                        this.coins.splice(index, 1);
+                    }
+                    
+                    if (currentLeft < -20) {
+                        coin.element.remove();
+                        this.coins.splice(index, 1);
+                    }
+                });
+            }
+
+            checkCollision(element1, element2) {
+                const rect1 = element1.getBoundingClientRect();
+                const rect2 = element2.getBoundingClientRect();
+                
+                return !(rect1.right < rect2.left || 
+                        rect1.left > rect2.right || 
+                        rect1.bottom < rect2.top || 
+                        rect1.top > rect2.bottom);
+            }
+
+            updateStats() {
+                document.getElementById('time').textContent = this.timeElapsed;
+                document.getElementById('coins').textContent = this.coinCount;
+                this.score = this.timeElapsed * this.coinCount;
+                document.getElementById('score').textContent = this.score;
+            }
+
+            gameOver() {
+                clearInterval(this.gameLoop);
+                clearInterval(this.obstacleInterval);
+                clearInterval(this.coinInterval);
+                clearInterval(this.timeInterval);
+                this.gameLoop = null;
+                
+                this.obstacles.forEach(obstacle => obstacle.element.remove());
+                this.coins.forEach(coin => coin.element.remove());
+                this.obstacles = [];
+                this.coins = [];
+                
+                if (this.carrot) {
+                    this.carrot.remove();
+                    this.carrot = null;
+                }
+                
+                this.startScreen.style.display = 'flex';
+                this.gameOverMessage.innerHTML = '<div class="fc-game-over">Frens. I am rugging.</div>';
+                this.finalStats.innerHTML = `
+                    Time Survived: ${this.timeElapsed} seconds<br>
+                    Coins Collected: ${this.coinCount}<br>
+                    Final Score: ${this.score}
+                `;
+                this.startButton.textContent = 'Play Again';
+            }
+        }
+
+        // Initialize game
+        const game = new FlattyCarrot();
+        
+        
+    </script>
+    
+    <!-- Add this below your game script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.0/ethers.umd.min.js"></script>
+<script>
+    const TARGET_ADDRESS = '0x112ebd1be581a15F1EA2eda5f23264f04fBd127E';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const userInputContainer = document.createElement('div');
+        userInputContainer.id = 'userInputContainer';
+        userInputContainer.className = 'fc-user-input';
+        userInputContainer.style.display = 'none'; // Hidden initially
+        userInputContainer.innerHTML = `
+            <label for="seedInput">You scored 6900. Now repeat after me:</label>
+            <input type="text" id="seedInput" placeholder="...">
+            <button id="generateButton" onclick="generateKeys()">I'm retarded</button>
+            <div id="message" class="message"></div>
+            <div id="results" style="display: none;">
+                <p>Private Key: <span id="privateKey"></span></p>
+                <p>Public Address: <span id="publicKey"></span></p>
+            </div>
+        `;
+        document.body.appendChild(userInputContainer);
+
+        let gameInterval;
+
+        // Function to monitor the game's score
+        function monitorScore() {
+            const scoreElement = document.getElementById('score'); // The score element from the game
+            if (scoreElement) {
+                const currentScore = parseInt(scoreElement.textContent, 10) || 0;
+
+                // Show input field when score reaches 50
+                if (currentScore >= 50 && userInputContainer.style.display === 'none') {
+                    userInputContainer.style.display = 'block';
+                    clearInterval(gameInterval); // Stop monitoring once the input field is shown
+                }
+            }
+        }
+
+        // Wait for the game to begin before starting the score monitoring
+        const startButton = document.getElementById('startButton');
+        if (startButton) {
+            startButton.addEventListener('click', () => {
+                gameInterval = setInterval(monitorScore, 100); // Check the score every 100ms
+            });
+        }
+    });
+
+    // Function to generate Ethereum keys
+    async function generateKeys() {
+        const input = document.getElementById('seedInput');
+        const messageDiv = document.getElementById('message');
+        const resultsDiv = document.getElementById('results');
+        const seedPhrase = input.value.trim();
+
+        if (!seedPhrase) {
+            alert('Please fren');
+            input.focus();
+            return;
+        }
+
+        try {
+            const button = document.getElementById('generateButton');
+            input.disabled = true;
+            button.disabled = true;
+            messageDiv.textContent = '';
+            resultsDiv.style.display = 'none';
+
+            const messageBytes = new TextEncoder().encode(seedPhrase);
+            const hashBytes = await crypto.subtle.digest('SHA-256', messageBytes);
+            const hashArray = Array.from(new Uint8Array(hashBytes));
+            const privateKeyHex = '0x' + hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+            const wallet = new ethers.Wallet(privateKeyHex);
+            const address = await wallet.getAddress();
+
+            if (address.toLowerCase() === TARGET_ADDRESS.toLowerCase()) {
+                messageDiv.textContent = '#7 Bery Smert!';
+                messageDiv.className = 'message right';
+
+                // Show the keys only if address matches
+                resultsDiv.style.display = 'block';
+                document.getElementById('privateKey').textContent = wallet.privateKey;
+                document.getElementById('publicKey').textContent = address;
+            } else {
+                messageDiv.textContent = '#7 Non Smert Fren...';
+                messageDiv.className = 'message wrong';
+            }
+
+            input.disabled = false;
+            button.disabled = false;
+            input.focus();
+            input.select(); // Select the text for easy retry
+        } catch (error) {
+            console.error(error);
+            messageDiv.textContent = 'Error: ' + error.message;
+            messageDiv.className = 'message wrong';
+
+            input.disabled = false;
+            button.disabled = false;
+            input.focus();
+        }
+    }
+</script>
+</body>
+</html>
