@@ -68,9 +68,9 @@
                <a href="https://forms.gle/or8xuBxQMnFa4gpw8" target="_blank" class="button-link">Submit Your Music</a>
            </div>
 
-	<div class="button-container">
-         <button class="button-link" id="downloadButton">Download Apu Sample Pack</button>
-        </div>
+	    <div class="button-container">
+        <button class="button-link" id="downloadButton">Download Apu Sample Pack</button>
+   		 </div>
 
 	   
 	  
@@ -90,13 +90,23 @@
     <script src="javascript/layout.js"></script>
 
 <script>
-    document.getElementById('downloadButton').addEventListener('click', function() {
-        const link = document.createElement('a');
-        link.href = 'images/samples.zip'; // Path to your file
-        link.download = 'samples.zip'; // Suggested filename
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+    document.getElementById('downloadButton').addEventListener('click', function () {
+        const zipUrl = '/images/samples.zip';
+
+        const userChoice = confirm("Do you want to open the ZIP in the browser? Click 'Cancel' to download instead.");
+        
+        if (userChoice) {
+            // Open the ZIP file in a new tab
+            window.open(zipUrl, '_blank');
+        } else {
+            // Force download
+            const link = document.createElement('a');
+            link.href = zipUrl;
+            link.download = 'samples.zip';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
     });
 </script>
 
