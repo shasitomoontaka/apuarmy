@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApuArmy - Blanko</title>
+    <link rel="stylesheet" href="style.css">
+	<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Main Content and Sidebar -->
+    <div class="container">
+        <main class="content">
+              <h1>GM Image Generator</h1>
+  <div class="controls">
+    <button id="randomizeBtn">Randomize</button>
+    <button id="addApuBtn">Add Apu</button>
+    <button id="randomFontBtn">Random Font</button>
+    <button id="defaultBtn">Set Default</button>
+    <button id="downloadBtn">Download</button>
+    <br>
+    <label>Background Color: <input type="color" id="bgColorPicker" value="#558a36"></label>
+    <label>Text Color: <input type="color" id="textColorPicker" value="#ffffff"></label>
+    <label>Font Size: <input type="range" id="fontSizeSlider" min="50" max="300" value="100"></label>
+  </div>
+  <canvas id="imageCanvas" width="800" height="400"></canvas>
+
+
+
+            
+            
+        </main>
+        <aside id="sidebar"></aside>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="/javascript/layout.js"></script>
+    <script src="/javascript/gm.js"></script>
+	
+</body>
+</html>
