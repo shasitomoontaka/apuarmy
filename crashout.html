@@ -13,106 +13,15 @@
     <title>ApuArmy - Crashout Appointment</title>
     <link rel="stylesheet" href="style.css">
 	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
-
-      <style>
-
-
-        .form-container {
-            background: #fff;
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            max-width: 700px;
-            margin: 0 auto 30px auto;
-        }
-
-        .form-container h1 {
-            color: #558A36;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .form-container label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .form-container input, .form-container textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            box-sizing: border-box;
-        }
-
-        .form-container input:focus, .form-container textarea:focus {
-            outline: none;
-            border-color: #558A36;
-        }
-
-        .form-container textarea {
-            height: 100px;
-            resize: vertical;
-        }
-
-        .form-container button {
-            background: #558A36;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            cursor: pointer;
-            transition: background 0.3s;
-            width: 100%;
-        }
-
-        .form-container button:hover {
-            background: #4a7530;
-        }
-
-        .certificate-container {
-            text-align: center;
-            margin-top: 30px;
-            max-width: 700px;
-            margin: 30px auto;
-        }
-
-        #certificate-canvas {
-            border: 2px solid #000;
-            margin-bottom: 20px;
-            background: white;
-            max-width: 100%;
-        }
-
-        #download-btn {
-            background: #558A36;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            cursor: pointer;
-            display: none;
-        }
-
-        #download-btn:hover {
-            background: #4a7530;
-        }
-    </style>
-  
 </head>
 <body>
-    <div class="form-container">
-        <h1>Create Your Crashout Appointment</h1>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Main Content and Sidebar -->
+    <div class="container">
+        <main class="content">
+            <h1>Create Your Crashout Appointment</h1>
 
         <form id="certificate-form">
             <label for="image-upload">Upload Image:</label>
@@ -138,9 +47,18 @@
         <canvas id="certificate-canvas" width="700" height="500"></canvas>
         <br>
         <button id="download-btn">Download Certificate</button>
+            
+            
+        </main>
+        <aside id="sidebar"></aside>
     </div>
 
-    <script>
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="javascript/layout.js"></script>
+
+	    <script>
         // Function to wrap text within a specified width
         function wrapText(context, text, x, y, maxWidth, lineHeight) {
             const words = text.split(' ');
@@ -397,10 +315,5 @@
         });
     </script>
 
-
-    <!-- Footer -->
-    <div id="footer"></div>
-
-    <script src="javascript/layout.js"></script>
 </body>
 </html>
