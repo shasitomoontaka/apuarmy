@@ -13,177 +13,40 @@ function loadHTML(id, url) {
         .catch(error => console.log('Error loading file: ', error));
 }
 
-// Function to fetch the latest posts from Steemit user using a working proxy
-const steemitUsername = 'steemitblog';
+// Function to fetch the latest posts from the RSS feed
+const rssFeedUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://mirror.xyz/0x0817d53BFff5A2bf5B70b94962C06ab7A4f431ed/feed/atom');
 
-async function fetchSteemitPosts(username) {
+async function fetchRSSFeed(url) {
     try {
-        // Using corsproxy.io which is more reliable for JSON APIs
-        const proxyUrl = 'https://corsproxy.io/?';
-        const steemitApiUrl = 'https://api.steemit.com';
-        
-        const requestBody = {
-            jsonrpc: "2.0",
-            method: "condenser_api.get_discussions_by_blog",
-            params: [{
-                tag: username,
-                limit: 3,
-                start_author: "",
-                start_permlink: ""
-            }],
-            id: 1
-        };
-
-        const response = await fetch(proxyUrl + encodeURIComponent(steemitApiUrl), {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(requestBody)
-        });
-
-        if (!response.ok) throw new Error(`Failed to fetch Steemit posts: ${response.status}`);
-        
-        const data = await response.json();
-        
-        if (data.result && data.result.length > 0) {
-            return data.result;
-        }
-        
-        throw new Error('No posts found in API response');
-        
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`Failed to fetch RSS feed: ${url}`);
+        return await response.json();
     } catch (error) {
-        console.error('Primary method failed, trying alternative approach:', error);
-        return await fetchSteemitPostsAlternative(username);
+        console.error('Error fetching RSS feed:', error);
+        return null;
     }
-}
-
-// Alternative method using different proxy and approach
-async function fetchSteemitPostsAlternative(username) {
-    try {
-        // Try using allorigins proxy with Steemit's web API
-        const proxyUrl = 'https://api.allorigins.win/get?url=';
-        const steemitUrl = `https://steemit.com/trending/${username}`;
-        
-        const response = await fetch(proxyUrl + encodeURIComponent(steemitUrl));
-        if (!response.ok) throw new Error(`Failed to fetch from alternative source: ${response.status}`);
-        
-        const data = await response.json();
-        const htmlContent = data.contents;
-        
-        // Parse the HTML to extract post information (basic regex approach)
-        const posts = extractPostsFromHTML(htmlContent, username);
-        return posts.slice(0, 3);
-        
-    } catch (error) {
-        console.error('Alternative method also failed:', error);
-        return await fetchSteemitPostsFallback(username);
-    }
-}
-
-// Fallback method using a different approach
-async function fetchSteemitPostsFallback(username) {
-    try {
-        // Using another working proxy
-        const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-        const hiveSqlApi = 'https://api.hive.blog';
-        
-        const requestBody = {
-            jsonrpc: "2.0",
-            method: "condenser_api.get_discussions_by_blog",
-            params: [{
-                tag: username,
-                limit: 3
-            }],
-            id: 1
-        };
-
-        const response = await fetch(proxyUrl + hiveSqlApi, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
-            },
-            body: JSON.stringify(requestBody)
-        });
-
-        if (!response.ok) throw new Error(`Fallback method failed: ${response.status}`);
-        
-        const data = await response.json();
-        return data.result || [];
-        
-    } catch (error) {
-        console.error('All methods failed:', error);
-        return [];
-    }
-}
-
-// Helper function to extract posts from HTML (for alternative method)
-function extractPostsFromHTML(html, username) {
-    const posts = [];
-    try {
-        // Simple regex to find post titles and permalinks in Steemit HTML
-        const postPattern = /<a[^>]+href="\/(@[^\/]+\/[^"]+)"[^>]*>([^<]+)<\/a>/g;
-        let match;
-        
-        while ((match = postPattern.exec(html)) !== null && posts.length < 3) {
-            const [, permalink, title] = match;
-            if (permalink.includes(`@${username}`)) {
-                posts.push({
-                    title: title.trim(),
-                    permlink: permalink.replace(`@${username}/`, ''),
-                    author: username
-                });
-            }
-        }
-    } catch (error) {
-        console.error('Error parsing HTML:', error);
-    }
-    return posts;
 }
 
 // Function to display the latest post titles in the Apuverse section
 async function displayLatestPostTitles() {
     const apuverseContainer = document.getElementById('apuverse-posts');
-    
-    // Show loading message
-    apuverseContainer.innerHTML = '<li>Loading latest posts...</li>';
-    
-    const posts = await fetchSteemitPosts(steemitUsername);
-    
-    if (posts && posts.length > 0) {
-        apuverseContainer.innerHTML = ''; // Clear loading message
-        
+    const rssData = await fetchRSSFeed(rssFeedUrl);
+    if (rssData) {
+        const posts = rssData.items.slice(0, 3); // Get the latest 3 posts
+        apuverseContainer.innerHTML = ''; // Clear any existing content
         posts.forEach(post => {
-            const listItem = document.createElement('li');
-            const link = document.createElement('a');
-            
-            // Construct the Steemit URL
-            const postUrl = `https://steemit.com/@${post.author}/${post.permlink}`;
-            
-            link.href = postUrl;
-            link.textContent = post.title || 'Untitled Post';
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer'; // Security best practice
-            
-            listItem.appendChild(link);
-            apuverseContainer.appendChild(listItem);
+            const listItem = document.createElement('li'); // Create a list item for each post
+            const link = document.createElement('a'); // Create a link for the title
+            link.href = post.link; // Set the href to the post link
+            link.textContent = post.title; // Set the text to the post title
+            link.target = '_blank'; // Open in a new tab
+            listItem.appendChild(link); // Append the link to the list item
+            apuverseContainer.appendChild(listItem); // Append the list item to the Apuverse container
         });
-        
-        console.log(`Successfully loaded ${posts.length} posts from @${steemitUsername}`);
     } else {
-        console.log('No posts found or failed to fetch Steemit posts');
-        apuverseContainer.innerHTML = '<li>Unable to load recent posts at this time</li>';
+        console.log('No posts found or failed to fetch RSS feed');
     }
 }
-
-// Initialize the function when the page loads
-document.addEventListener('DOMContentLoaded', function() {
-    displayLatestPostTitles();
-});
-
-// Optional: Refresh posts every 10 minutes
-setInterval(displayLatestPostTitles, 10 * 60 * 1000);
 
 // Load the header, sidebar, and footer when the DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
