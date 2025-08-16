@@ -14,8 +14,7 @@ function loadHTML(id, url) {
 }
 
 // Function to fetch the latest posts from the RSS feed
-const rssFeedUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://mirror.xyz/0x0817d53BFff5A2bf5B70b94962C06ab7A4f431ed/feed/atom');
-
+const rssFeedUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://mirror.xyz/0x0817d53BFff5A2bf5B70b94962C06ab7A4f431ed/feed/atom');
 async function fetchRSSFeed(url) {
     try {
         const response = await fetch(url);
